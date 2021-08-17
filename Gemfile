@@ -49,3 +49,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #devise
 gem 'devise'
+
+#refile
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+
+#bootstrap&jquery
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+
+#kaminari
+gem 'kaminari'
+
+#rspec/factorybot/capybara
+group :test do
+  gem "capybara", ">= 2.15"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+end
