@@ -60,6 +60,10 @@ gem 'jquery-rails'
 #kaminari
 gem 'kaminari'
 
+#faker
+gem 'faker'
+gem 'gimei'
+
 #rspec/factorybot/capybara
 group :test do
   gem "capybara", ">= 2.15"

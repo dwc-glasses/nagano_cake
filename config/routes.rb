@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  namespace :admin, path:"" do
+    devise_for :admin
+  end
+  
   namespace :admin do
     root to:'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     resources :order_products, only: [:update]
   end
   namespace :public, path:"" do
+    devise_for :customers
     #homesコントローラー
     root to:'homes#top'
     get '/about' => 'homes#about'
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
     patch '/customers' => 'customers#update'
     get '/customers/suspend' => 'customers#suspend'
     patch '/customers/suspended' => 'customers#suspended'
-    
+
     resources :addresses, except:[:show, :new]
     resources :products, only:[:index, :show]
     resources :cart_products, only:[:index, :create, :update, :destroy]
@@ -28,6 +31,6 @@ Rails.application.routes.draw do
     get '/order_infos/confirm' => 'order_infos#confirm'
     get '/order_infos/complete' => 'oreder_infos#complete'
   end
-  
+
 end
 
