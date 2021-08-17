@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :order_infos, only: [:index, :show, :update]
     resources :order_products, only: [:update]
   end
+  
+  
   namespace :public, path:"" do
     #homesコントローラー
     root to:'homes#top'
