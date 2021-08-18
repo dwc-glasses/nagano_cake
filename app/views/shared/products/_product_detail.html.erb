@@ -8,4 +8,7 @@
   <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
   <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
   <tr><th>在庫情報</th><td><%= product.status %></td></tr>
+  <% if request.fullpath.include?("admin") %>
+    <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id), class: "btn btn-info btn-sm" %></td></tr>
+  <% end %>
 </table>
