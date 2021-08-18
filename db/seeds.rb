@@ -30,3 +30,8 @@ require 'faker'
     password:         "samplepass4649",
     )
 end
+
+genre = ['ケーキ', 'プリン', '焼き菓子', 'キャンディ']
+genre.each do |genre|
+  Genre.create!({name: genre})
+end
