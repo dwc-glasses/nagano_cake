@@ -9,11 +9,11 @@
 　<div class="row pt-4">
     <p class="col-md-3 text-left">名前</p>
     <div class="col-md-3 form-inline text-right">
-      <%= f.label :（姓） %>
+      <%= f.label :family_name, '（姓）' %>
       <%= f.text_field :family_name, autofocus: true %>
     </div>
     <div class="col-md-3 form-inline">
-      <%= f.label :（名） %>
+      <%= f.label :given_name,'（名）' %>
       <%= f.text_field :given_name, autofocus: true %>
     </div>
 　</div>
@@ -22,11 +22,11 @@
 　<div class="row">
     <p class="col-md-3 text-left">フリガナ</p>
     <div class="col-md-3 form-inline text-right">
-      <%= f.label :（セイ） %>
+      <%= f.label :family_name_kana,'（セイ）' %>
       <%= f.text_field :family_name_kana, autofocus: true %>
     </div>
     <div class="col-md-3 rorm-inline">
-      <%= f.label :（メイ） %>
+      <%= f.label :given_name_kana,'（メイ）' %>
       <%= f.text_field :given_name_kana, autofocus: true %>
     </div>
 　</div>
