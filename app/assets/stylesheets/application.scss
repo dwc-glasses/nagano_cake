@@ -1,1 +1,12 @@
- @import "bootstrap";
+@import "bootstrap";
+@import "colors";
+ 
+ @charset "utf-8";
+
+.header-main{
+    background-color: $iceblue;
+}
+
+.footer-main{
+    background-color: $beige;
+}
