@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post '/customers'        => 'customers/registrations#create', as: :customer_registration
   end
 
-  devise_for :admins, path: "/admin", controllers: {
+  devise_for :admin, path: "/admin", controllers: {
       sessions:      'admins/sessions',
       passwords:     'admins/passwords',
       registrations: 'admins/registrations'
