@@ -1,6 +1,6 @@
 @import "bootstrap";
 @import "colors";
- 
+
  @charset "utf-8";
 
 .header-main{
@@ -9,4 +9,22 @@
 
 .footer-main{
     background-color: $beige;
+}
+
+.customer_login_Login,
+.customer_login_signed_in,
+.customer_login_nsigned_in{
+    background-color: whitesmoke ;
+}
+
+.customer_login_Login{
+    width: 120px;
+}
+
+.customer_login_signed_in{
+    width: 290px;
+}
+
+.customer_login_nsigned_in{
+    width: 270px;
 }
