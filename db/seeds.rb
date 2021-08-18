@@ -30,14 +30,3 @@ require 'faker'
     password:         "samplepass4649",
     )
 end
-
-10.times do |n|
-  Product.create!(
-    name: "test#{n}",
-    introduction: "this introduction created by test#{n}",
-    genre_id: 1,
-    price: n*100,
-    image_id: "",
-    sales_status: n%2 == 0 ? true : false
-  )
-end

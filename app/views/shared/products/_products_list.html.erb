@@ -1,0 +1,23 @@
+<h2>商品一覧</h2>
+
+<table class="table">
+  <tr>
+      <th></th> <th>商品名</th> <th>商品説明</th> <th>ジャンル</th> <th>価格(税込)</th> <th></th>
+  </tr>
+  
+  <% products.each do |product| %>
+    <tr>
+      <td><%= attachment_image_tag product, :image, format: 'jpeg', size: '50x50' %></td>
+      <% if request.fullpath.include?("admin") %>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+      <% else %>
+        <td><%= link_to product.name, public_product_path(product.id) %></td>
+      <% end %>
+      <td><%= product.introduction %></td>
+      <td><%= product.genre_id %></td>
+      <td><%= product.tax_price %></td>
+      <td><%= product.status %></td>
+    </tr>
+  <% end %>
+  
+</table>
