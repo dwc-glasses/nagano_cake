@@ -19,8 +19,8 @@
         <% end %>
         <!--注文履歴リンクを後で付ける-->
         <p>
-          <%= link_to "編集する",edit_admin_customer(@customer), {class: "btn btn-success"} %>
-          "    "<%= link_to "注文履歴一覧を見る", "#" %>
+          <%= link_to "編集する",edit_admin_customer_path(@customer), {class: "btn btn-success"} %>
+          <%= link_to "注文履歴一覧を見る", "#",{class: "btn btn-primary ml-5"} %>
         </p>
       </div>
     </div>
