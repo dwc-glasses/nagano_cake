@@ -7,7 +7,7 @@
 
     <!--名前（漢字）-->
 　<div class="row pt-4">
-    <p class="col-md-2 text-left">名前</p>
+    <p class="col-md-3 text-left">名前</p>
     <div class="col-md-3 form-inline text-right">
       <%= f.label :（姓） %>
       <%= f.text_field :family_name, autofocus: true %>
@@ -20,7 +20,7 @@
 
 　<!--名前（カナ）-->
 　<div class="row">
-    <p class="col-md-2 text-left">フリガナ</p>
+    <p class="col-md-3 text-left">フリガナ</p>
     <div class="col-md-3 form-inline text-right">
       <%= f.label :（セイ） %>
       <%= f.text_field :family_name_kana, autofocus: true %>
@@ -34,7 +34,7 @@
 　<!--メールアドレス-->
 　<div class="row">
     <p class="col-md-3 text-left">メールアドレス</p>
-    <div class="form_group col-2 text-right">
+    <div class="form_group col-md-3 text-left">
       <%= f.email_field :email, autofocus: true %>
     </div>
   </div>
@@ -42,7 +42,7 @@
 　<!--郵便番号-->
 　<div class="row">
     <p class="col-3">郵便番号(ハイフンなし)</p>
-    <div class="from_group col-2 text-right">
+    <div class="from_group col-md-3 text-left">
       <%= f.text_field :postal_code, autofocus: true %>
     </div>
   </div>
@@ -50,14 +50,14 @@
 　<!--住所-->
 　<div class="row">
     <p class="col-md-3 text-left">住所</p>
-    <div class="from_group col-2 text-right">
+    <div class="from_group col-md-3 text-left">
       <%= f.text_field :address, autofocus: true %>
     </div>
 　</div>
 　<!--電話番号-->
 　<div class="row">
     <p class="col-md-3 text-left">電話番号(ハイフンなし)</p>
-    <div class="from_group col-2 text-right">
+    <div class="from_group col-md-3 text-left">
       <%= f.telephone_field :phone, autofocus: true %>
     </div>
 　</div>
@@ -65,7 +65,7 @@
 　<!--パスワード-->
 　<div class="row">
     <p class="col-md-3 text-left">パスワード(6文字以上)</p>
-    <div class="form_group col-2 text-right">
+    <div class="form_group col-md-3 text-left">
      <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
   </div>
@@ -73,15 +73,15 @@
   <!--パスワード（確認）-->
 　<div class="row">
     <p class="col-md-3 text-left">パスワード(確認用)</p>
-    <div class="form_group col-2 text-right">
+    <div class="form_group col-md-3 text-left">
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 　</div>
 
   <!--登録ボタン-->
   <div class="row">
-    <div class="col-3"></div>
-    <div class="actions col-2 text-center pb-5">
+    <div class="col-md-3"></div>
+    <div class="actions col-md-3 text-center pt-2 pb-5">
     <%= f.submit "新規登録", class: "btn btn-success btn-md" %>
   </div>
     <% end %>
