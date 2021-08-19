@@ -1,0 +1,41 @@
+<div class="row order-detail">
+    <div class="col-md-12">
+      <h2 class="m-5 bg-light">注文履歴詳細</h2>
+      <div>
+        <label for="customer-name" class="w-25">購入者</label>
+        <%= @order_info.customer.family_name + " " + @order_info.customer.given_name %>
+      </div>
+      <div class="form-group">
+        <label for="order-date" class="w-25">注文日</label>
+        <%= @order_info.created_at %>
+      </div>
+      <div class="form-group">
+        <label for="order-address" class="w-25">配送先</label>
+        "〒" + <%= @order_info.postal_code %> + <%= @order_info.address %>
+      </div>
+      <div class="form-group">
+        <label for="payment-method" class="w-25">支払方法</label>
+        <%= @order_info.payment_method %>
+      </div>
+      <%= form_with model:@order_info, url:admin_order_info_path(@order_info), local:true do |f| %>
+      <div class="form-group">
+        <label for="order-status" class="w-25">注文ステータス</label>
+        <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2],
+                                     ["発送準備中", 3], ["発送済み", 4]] %>
+      </div>
+      <div class="form-group">
+        <%= f.submit '更新',class:"btn btn-success" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row order-products-detail">
+    <div class="col-md-8">
+      
+    </div>
+    <div class="col-md-4">
+      <p>商品合計　<%= @order_info.order_products #カラムの合計考える %>円</p>
+      <p>送料　　　<%= @order_info.postage %></p>
+      <p>請求金額合計　<%= @order_info.total_payment %>円</p>
+    </div>
+  </div>
