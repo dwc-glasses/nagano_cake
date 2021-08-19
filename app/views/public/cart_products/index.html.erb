@@ -25,7 +25,13 @@
     <% total += cp.subtotal %>
   <% end %>
   <tr>
-    <th colspan=3></th><th>合計金額</th><td>¥<%= total %></td>
+    <th><%= link_to "買い物を続ける", public_products_path, class: "btn btn-primary btn-sm" %></th>
+    <th colspan=2></th><th>合計金額</th><td>¥<%= total %></td>
   </tr>
-
 </table>
+
+<div class="row">
+  <div class="col-12 text-center">
+    <%= link_to "情報入力に進む", public_products_path, class: "btn btn-success" %>
+  </div>
+</div>
