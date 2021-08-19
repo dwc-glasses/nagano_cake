@@ -35,3 +35,8 @@ genre = ['ケーキ', 'プリン', '焼き菓子', 'キャンディ']
 genre.each do |genre|
   Genre.create!({name: genre})
 end
+
+Admin.create!(
+  email:    "megane@glasses",
+  password: "adminadmin"
+  )
