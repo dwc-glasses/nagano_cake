@@ -1,16 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'order_infos/new'
-    get 'order_infos/index'
-    get 'order_infos/show'
-    get 'order_infos/create'
-    get 'order_infos/confirm'
-    get 'order_infos/complete'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  
   #namespace内ではエラーが出たため外に記述
   devise_for :customers, skip: 'registrations', controllers: {
       sessions:      'customers/sessions',
@@ -34,8 +23,9 @@ Rails.application.routes.draw do
     resources :customers,      only: [:index, :show, :edit, :update]
     resources :products,       except: [:destroy]
     resources :genres,         only: [:index, :edit, :create, :update]
-    resources :order_infos,    only: [:index, :show, :update]
-    resources :order_products, only: [:update]
+    resources :order_infos,    only: [:index, :show, :update] do
+      resources :order_products, only: [:update]
+    end
   end
 
   namespace :public, path:"" do
