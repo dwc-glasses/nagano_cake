@@ -40,3 +40,37 @@
 body {
   font-family: "YuGothic";
 }
+
+
+.top {
+  .top-view{
+    display: flex;
+    .top-img {
+      margin-right: 10px;
+    }
+  
+    .top-txt {
+      line-height: 400%;
+    }
+  }
+  
+  .top-products {
+    display: flex;
+  }
+}
+
+
+
+
+.about{
+  display: flex;
+  
+  .about-img {
+    margin-right: 10px;
+  }
+  
+  .about-txt {
+    line-height: 400%;
+  }
+  
+}

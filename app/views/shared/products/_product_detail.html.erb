@@ -5,7 +5,7 @@
 <table class="table">
   <tr><th>商品名</th><td><%= product.name %></td></tr>
   <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
-  <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
+  <tr><th>ジャンル</th><td><%= Genre.find(product.genre_id).name %></td></tr>
   <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
   <tr><th>在庫情報</th><td><%= product.status %></td></tr>
   <% if request.fullpath.include?("admin") %>
