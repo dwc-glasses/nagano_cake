@@ -1,0 +1,43 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%= render 'layouts/error', model:@customer %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2 class="m-5 bg-light">会員情報編集</h2>
+      <%=form_with model:@customer, url:admin_customer_path(@customer), local:true do |f| %>
+
+        <div class="form-group">
+          <label for="customer-name" class="w-25">氏名</label>
+          <%= f.text_field :family_name,      class:"customer-family_name" %>
+          <%= f.text_field :given_name,       class:"customer-given_name" %>
+        </div>
+        <div class="form-group">
+          <label for="customer-name-kana" class="w-25">フリガナ</label>
+          <%= f.text_field :family_name_kana, class:"customer-family-name-kana" %>
+          <%= f.text_field :given_name_kana,  class:"customer-given-name-kana" %>
+        </div>
+        <div class="form-group">
+          <label for="postal-code" class="w-25">郵便番号</label>
+          <%= f.text_field :postal_code,       class:"postal-code" %>
+        </div>
+        <div class="form-group">
+          <label for="address" class="w-25">住所</label>
+          <%= f.text_field :address,           class:"address",size:50 %>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="w-25">電話番号</label>
+          <%= f.text_field :phone,             class:"phone" %>
+        </div>
+        <div class="form-group">
+          <label for="email" class="w-25">メールアドレス</label>
+          <%= f.text_field :email,             class:"email" %>
+        </div>
+
+        <div class="form-group ">
+          <%= f.submit '編集内容を保存' ,class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
