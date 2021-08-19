@@ -1,0 +1,68 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-9">
+      <h3 class="m-5 bg-light">マイページ</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 pl-2">
+      <h3>登録情報</h3>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "編集する", public_customers_edit_path(@customer), {class: "btn btn-success"} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="h5 border bg-light infos_cell">氏名</div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="h5 border infos_cell"><%= @customer.family_name + @customer.given_name %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <p>カナ</p>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class=" border infos_cell">
+        <p><%= @customer.family_name_kana + @customer.given_name_kana %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="h5 border bg-light infos_cell">郵便番号</div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="h5 border infos_cell"><%= @customer.postal_code %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="h5 border bg-light">氏名</div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="h5 border"><%= @customer.family_name + @customer.given_name %></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="h5 border bg-light">氏名</div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="h5 border"><%= @customer.family_name + @customer.given_name %></div>
+    </div>
+  </div>
+
+
+      <div class="m-10">
+        <%= link_to "注文履歴一覧を見る", "#",{class: "btn btn-primary ml-5"} %>
+      </div>
+</div>
