@@ -3,12 +3,13 @@
   <p class="col">
     ようこそ、ながのCAKEへ！</br>
     このサイトは、ケーキ販売のECサイトになります。</br>
-    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</br>
   </p>
 </div>
 
 <h2>新着商品</h2>
 <div class="row">
+  <% count = 0 %>
   <% @products.each do |product| %>
     <div class="col-3">
       <!--商品画像-->
@@ -19,6 +20,13 @@
       <%= product.name %></br>
       ¥<%= product.tax_price %></br>
     </div>
+    
+    <% count += 1 
+     if count == 4
+       break
+     end
+    %>
+    
     <% end %>
 </div>
 </div>
