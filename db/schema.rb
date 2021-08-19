@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_003313) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
@@ -62,7 +63,6 @@ ActiveRecord::Schema.define(version: 2021_08_18_003313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_products_on_genre_id"
-
   end
 
 end
