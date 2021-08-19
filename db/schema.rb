@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_08_18_003313) do
-
+ActiveRecord::Schema.define(version: 2021_08_19_051414) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,8 +44,20 @@ ActiveRecord::Schema.define(version: 2021_08_18_003313) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-
   create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_infos", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "postage", null: false
+    t.integer "total_payment", null: false
+    t.integer "payment_method", null: false
+    t.integer "order_status", default: 0, null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
