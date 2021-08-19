@@ -1,0 +1,2 @@
+class OrderInfo < ApplicationRecord
+end
