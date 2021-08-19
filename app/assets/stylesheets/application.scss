@@ -1,6 +1,9 @@
 @import "bootstrap";
 @import "colors";
 
+@import "dimensions";
+@import "pagination";
+
  @charset "utf-8";
 
 .header-main{
@@ -11,7 +14,69 @@
     background-color: $beige;
 }
 
+
 .infos_cell{
   margin: 0;
   height: 40px;
+}
+
+.customer_login_Login,
+.customer_login_signed_in,
+.customer_login_nsigned_in{
+    background-color: whitesmoke ;
+}
+
+.customer_login_Login{
+    width: 120px;
+}
+
+.customer_login_signed_in{
+    width: 290px;
+}
+
+.customer_login_nsigned_in{
+    width: 270px;
+}
+
+.main {
+  margin: 50px 0;
+}
+
+body {
+  font-family: "YuGothic";
+}
+
+
+.top {
+  .top-view{
+    display: flex;
+    .top-img {
+      margin-right: 10px;
+    }
+  
+    .top-txt {
+      line-height: 400%;
+    }
+  }
+  
+  .top-products {
+    display: flex;
+  }
+}
+
+
+
+
+.about{
+  display: flex;
+  
+  .about-img {
+    margin-right: 10px;
+  }
+  
+  .about-txt {
+    line-height: 400%;
+  }
+  
+
 }

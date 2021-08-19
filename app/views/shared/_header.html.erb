@@ -2,25 +2,59 @@
   <nav class="navbar navbar-expand-md navbar-dark header-main">
     <div class="container">
       <h1 class="m-0">
-        <a href="#" class="navbar-brand d-block">NAGANO CAKE</a>
+          <%= link_to "NAGANO CAKE", public_homes_top_path, class:"navbar-brand d-block" %>
       </h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#grobalNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="grobalNav" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item pl-4 active">
-            <a href="#" class="nav-link text-center">HOME</a>
-          </li>
-          <li class="nav-item pl-4">
-            <a href="#" class="nav-link text-center">ABOUT</a>
-          </li>
-          <li class="nav-item pl-4">
-            <a href="#" class="nav-link text-center">BLOG</a>
-          </li>
-          <li class="nav-item pl-4">
-            <a href="#" class="nav-link text-center">CONTACT</a>
-          </li>
+           <% if customer_signed_in? %>
+           <!--User is alreadey log in-->
+              <li class="nav-item pl-4 active">
+                <%= link_to "MyPage", public_customers_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "PRODUCTS", public_products_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "CART", public_cart_products_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "LOGOUT", destroy_customer_session_path, class:"nav-link text-center", method: :delete %>
+              </li>
+           <% elsif admin_signed_in? %>
+           <!--admin is alreadey log in-->
+              <li class="nav-item pl-4 active">
+                <%= link_to "PRODUCTS", admin_products_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4 active">
+                <%= link_to "CUSTOMERS", admin_customers_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "ORDER", admin_order_infos_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "GENRE", admin_genres_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "LOGOUT", destroy_admin_session_path, class:"nav-link text-center", method: :delete %>
+              </li>
+           <% else %>
+           <!--User is log out-->
+              <li class="nav-item pl-4 active">
+                <%= link_to "ABOUT", public_homes_about_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "PRODUCTS", public_products_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "SIGN UP", new_customer_registration_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= link_to "LOGIN", new_customer_session_path, class:"nav-link text-center" %>
+              </li>
+            <% end %>
         </ul>
       </div>
     </div>

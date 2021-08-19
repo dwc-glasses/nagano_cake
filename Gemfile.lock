@@ -58,6 +58,8 @@ GEM
       execjs (~> 2)
     bcrypt (3.1.16)
     bindex (0.8.1)
+    bootsnap (1.7.7)
+      msgpack (~> 1.0)
     bootstrap (4.5.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
@@ -144,6 +146,7 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
+    msgpack (1.4.2)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     netrc (0.11.0)
@@ -177,7 +180,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.3.0)
+    rails-html-sanitizer (1.4.1)
       loofah (~> 2.3)
     railties (5.2.5)
       actionpack (= 5.2.5)
@@ -292,6 +295,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsnap
   bootstrap (~> 4.5.0)
   byebug
   capybara (>= 2.15)
@@ -305,7 +309,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.0.5)
   puma (~> 3.0)
-  rails (~> 5.2.5)
+  rails (= 5.2.5)
   refile!
   rspec-rails
   sass-rails (~> 5.0)
