@@ -20,3 +20,20 @@
 body {
   font-family: "YuGothic";
 }
+
+
+
+
+.about{
+  display: flex;
+  
+  .about-img {
+    margin-right: 10px;
+  }
+  
+  .about-txt {
+    line-height: 400%;
+  }
+  
+}
+
