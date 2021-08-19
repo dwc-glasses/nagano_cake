@@ -14,7 +14,7 @@
         <td><%= link_to product.name, public_product_path(product.id) %></td>
       <% end %>
       <td><%= product.introduction %></td>
-      <td><%= product.genre_id %></td>
+      <td><%= Genre.find(product.genre_id).name %></td>
       <td><%= product.tax_price %></td>
       <td><%= product.status %></td>
 

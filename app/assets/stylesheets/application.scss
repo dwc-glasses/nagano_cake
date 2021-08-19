@@ -42,6 +42,24 @@ body {
 }
 
 
+.top {
+  .top-view{
+    display: flex;
+    .top-img {
+      margin-right: 10px;
+    }
+  
+    .top-txt {
+      line-height: 400%;
+    }
+  }
+  
+  .top-products {
+    display: flex;
+  }
+}
+
+
 
 
 .about{
@@ -56,4 +74,3 @@ body {
   }
   
 }
-
