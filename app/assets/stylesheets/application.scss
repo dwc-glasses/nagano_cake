@@ -1,6 +1,8 @@
 @import "bootstrap";
 @import "colors";
- 
+@import "dimensions";
+@import "pagination";
+
  @charset "utf-8";
 
 .header-main{
@@ -9,4 +11,12 @@
 
 .footer-main{
     background-color: $beige;
+}
+
+.main {
+  margin: 50px 0;
+}
+
+body {
+  font-family: "YuGothic";
 }
