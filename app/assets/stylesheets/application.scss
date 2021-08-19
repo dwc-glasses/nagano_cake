@@ -1,5 +1,8 @@
 @import "bootstrap";
 @import "colors";
+@import "dimensions";
+@import "pagination";
+
 
  @charset "utf-8";
 
@@ -10,6 +13,7 @@
 .footer-main{
     background-color: $beige;
 }
+
 
 .customer_login_Login,
 .customer_login_signed_in,
@@ -27,4 +31,12 @@
 
 .customer_login_nsigned_in{
     width: 270px;
+}
+
+.main {
+  margin: 50px 0;
+}
+
+body {
+  font-family: "YuGothic";
 }
