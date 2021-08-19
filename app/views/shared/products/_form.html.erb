@@ -20,7 +20,7 @@
 
   <div>
     <%= f.label :sales_status, '商品説明' %>
-    <%= f.select :sales_status, [['販売中',0],['売り切れ',1]], { include_blank: true, selected: 0 } %>
+    <%= f.select :sales_status, [['販売中',true],['売り切れ',false]]%>
   </div>
 
   <%= f.submit "送信" %>
