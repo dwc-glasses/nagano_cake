@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-
 gem 'rails', '5.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
@@ -73,3 +72,5 @@ group :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
+
+gem 'bootsnap', require: false
