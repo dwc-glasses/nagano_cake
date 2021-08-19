@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-md navbar-dark header-main">
     <div class="container">
       <h1 class="m-0">
-          <%= link_to "NAGANO CAKE", public_homes_top_path, class:"navbar-brand d-block" %>
+          <%= link_to "NAGANO CAKE", public_root_path, class:"navbar-brand d-block" %>
       </h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#grobalNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,7 +43,7 @@
            <% else %>
            <!--User is log out-->
               <li class="nav-item pl-4 active">
-                <%= link_to "ABOUT", public_homes_about_path, class:"nav-link text-center" %>
+                <%= link_to "ABOUT", public_about_path, class:"nav-link text-center" %>
               </li>
               <li class="nav-item pl-4">
                 <%= link_to "PRODUCTS", public_products_path, class:"nav-link text-center" %>
