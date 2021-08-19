@@ -8,8 +8,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(current_customer.id)
-    if customer.update(customer_params)
+    @customer = Customer.find(current_customer.id)
+    if @customer.update(customer_params)
       flash[:notice] = "会員情報を更新しました"
       redirect_to action: :show
     else
