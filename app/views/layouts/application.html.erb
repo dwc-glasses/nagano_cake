@@ -11,10 +11,14 @@
   <body>
     <div id="wrapper">
       <%= render "shared/header" %>
-        
-        <%= yield %>
-        
+      
+      <div class="container px-5 px-sm-0">
+        <%= render "shared/flash_message" %>
+        <div class="main">
+          <%= yield %>
+        </div>
       </div>
+      
       <%= render "shared/footer" %>
     </div>
   </body>
