@@ -1,5 +1,6 @@
 <div class="container">
-    <h2 class="pt-5">ジャンル一覧・追加</h2>
+  <%= render 'layouts/error', model: @genre %>
+  <h2 class="pt-5">ジャンル一覧・追加</h2>
   <div class="row py-4">
     <div class="col-8">
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
