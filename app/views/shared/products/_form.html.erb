@@ -1,0 +1,27 @@
+<% product_hash = { :image => ["商品イメージ", :attachment],
+                    :name => ["商品名", :field],
+                    :introduction => ["商品説明", :area],
+                    :genre_id => ["ジャンル", :field],
+                    :price => ["価格（税抜き）", :field]  }%>
+
+<%= form_with model: product, url: path, local: true do |f| %>
+  <% product_hash.each do |key, value| %>
+    <div>
+      <%= f.label key, value[0] %>
+      <% if value[1] == :field %>
+        <%= f.text_field key %>
+      <% elsif value[1] == :attachment %>
+        <%= f.attachment_field key %>
+      <% elsif value[1] == :area %>
+        <%= f.text_area key %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :sales_status, '商品説明' %>
+    <%= f.select :sales_status, [['販売中',0],['売り切れ',1]], { include_blank: true, selected: 0 } %>
+  </div>
+
+  <%= f.submit "送信" %>
+<% end %>

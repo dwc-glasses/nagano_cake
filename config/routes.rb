@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
   #namespace内ではエラーが出たため外に記述
   devise_for :customers, skip: 'registrations', controllers: {
       sessions:      'customers/sessions',
@@ -52,4 +56,3 @@ Rails.application.routes.draw do
   end
 
 end
-
