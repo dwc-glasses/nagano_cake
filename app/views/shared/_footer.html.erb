@@ -12,7 +12,7 @@
           <h5>Products</h5>
           <ul class="list-unstyled text-small">
             <li><%= link_to "商品一覧", public_products_path, class:"text-muted" %></li>
-            
+
             <% Genre.all.each do |g| %>
               <li><%= link_to g.name, public_products_path, class:"text-muted" %></li>
             <% end %>
