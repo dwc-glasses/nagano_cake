@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   attachment :image
-  validates :name, :genre_id, :price, presence: true
+  validates :name, :introduction, :genre_id, :price, :image_id, presence: true
 
   TAX_RATE = 1.1
 

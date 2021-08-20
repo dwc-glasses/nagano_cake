@@ -64,6 +64,9 @@ gem 'kaminari'
 gem 'faker'
 gem 'gimei'
 
+#i18n
+gem "rails-i18n"
+
 #rspec/factorybot/capybara
 group :test do
   gem "capybara", ">= 2.15"
