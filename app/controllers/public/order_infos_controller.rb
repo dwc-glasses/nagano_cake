@@ -7,9 +7,11 @@ class Public::OrderInfosController < Public::Base
   end
 
   def index
+    @order_infos = Orderinfo.where(customer_id: current_customer.id)
   end
 
   def show
+    @order_info = OrderInfo.find(params[:id])
   end
 
   def create
