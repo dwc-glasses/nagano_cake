@@ -1,4 +1,4 @@
-class Public::OrderInfosController < ApplicationController
+class Public::OrderInfosController < Public::Base
   before_action :move_to_signed_in
 
   def new

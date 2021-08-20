@@ -1,4 +1,4 @@
-class Public::AddressesController < ApplicationController
+class Public::AddressesController < Public::Base
   before_action :authenticate_customer!
 
   def index
