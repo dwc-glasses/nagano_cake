@@ -23,7 +23,8 @@ class Public::OrderInfosController < ApplicationController
   private
   def order_ifo_params
     params.require(:order_info).permit(:postage, :total_payment, :payment_method, :order_status, :postal_code, :address, :name)
-  
+  end
+
   def move_to_signed_in
     unless customer_signed_in?
       redirect_to  '/customers/sign_in'

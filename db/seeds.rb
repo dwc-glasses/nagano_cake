@@ -40,3 +40,30 @@ Admin.create!(
   email:    "megane@glasses",
   password: "adminadmin"
   )
+
+OrderInfo.create!(
+  customer_id: 1,
+  postage: 800,
+  total_payment: 2000,
+  payment_method: 1,
+  order_status: 0,
+  postal_code: Faker::Number.(digits:7),
+  address: Faker::Address.street_address,
+  name: Gimei.kanji
+  )
+
+OrderProduct.create!(
+  product_id: 1,
+  order_id: 1,
+  price: 300,
+  quantity: 2,
+  product_status: 0,
+  )
+
+OrderProduct.create!(
+  product_id: 2,
+  order_id: 1,
+  price: 200,
+  quantity: 3,
+  product_status: 0,
+  )
