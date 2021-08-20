@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
     #cart_producst
     delete '/cart_products/delete_all' => 'cart_products#delete_all'
+    
 
     #order_infos
     get '/order_infos/confirm'         => 'order_infos#confirm'
