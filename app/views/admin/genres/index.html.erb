@@ -1,9 +1,11 @@
 <%= render 'layouts/error', model: @genre %>
-  <h2 class="pt-5">ジャンル一覧・追加</h2>
-      <%= form_with model: @genre, url: admin_genres_path,class:"row py-4", local: true do |f| %>
-        <%= f.label :ジャンル名, class:"col-2 text-center" %>
-        <%= f.text_field :name ,class:"col-2"%>
-        <div class="ml-5 text-right">
+  <div class="row">
+    <h2>ジャンル一覧・追加</h2>
+  </div>
+      <%= form_with model: @genre, url: admin_genres_path, class:"row py-4", local: true do |f| %>
+        <%= f.label :ジャンル名, class:"ml-3 d-flex align-items-center" %>
+        <%= f.text_field :name, placeholder:"ジャンル名", class:"col-2 mr-5 ml-5"%>
+        <div class="text-right">
           <%= f.submit "新規登録", class: "btn btn-success"%>
         </div>
 
