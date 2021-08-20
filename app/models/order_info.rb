@@ -3,6 +3,7 @@ class OrderInfo < ApplicationRecord
             :order_status, :postal_code, :address, :name,
             presence: true
 
+
   belongs_to :customer
   has_many :order_products, inverse_of:"order_info"
 end

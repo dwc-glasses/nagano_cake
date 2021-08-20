@@ -1,0 +1,134 @@
+  <div class="row">
+    <div class="col-md-9">
+      <h3 class="m-5 bg-light">マイページ</h3>
+    </div>
+  </div>
+
+  <div class="row pb-3">
+    <div class="col-md-2">
+      <h4>登録情報</h4>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "編集する", public_customers_edit_path, {class: "btn btn-success btn-sm"} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          氏名
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.family_name + @customer.given_name %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          カナ
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class=" border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.family_name_kana + @customer.given_name_kana %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          郵便番号
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.postal_code %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          住所
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.address %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          電話番号
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.phone %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" style="padding: 0;">
+      <div class="border bg-light d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          メールアドレス
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="padding: 0;">
+      <div class="border d-flex align-items-center infos_cell">
+        <div class="pl-1">
+          <%= @customer.email %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-4">
+    <div class="col-md-2">
+      <h4>配送先</h4>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "一覧を見る", public_addresses_path, {class: "btn btn-primary btn-sm"} %>
+    </div>
+  </div>
+
+  <div class="row pt-3 pb-5">
+    <div class="col-md-2">
+      <h4>注文一覧</h4>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "一覧を見る", '#',{class: "btn btn-primary btn-sm"} %>
+    </div>
+  </div>

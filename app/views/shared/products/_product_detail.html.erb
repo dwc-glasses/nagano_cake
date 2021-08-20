@@ -1,14 +1,27 @@
-<div class="product-image ">
-  <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x250' %>
+<div class="row">
+  <div class="col-4">
+    <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x250' %>
+  </div>
+  
+  <table class="table col-6">
+    <tr><th>商品名</th><td><%= product.name %></td></tr>
+    <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
+    <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
+    <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
+    <tr><th>在庫情報</th><td><%= product.status %></td></tr>
+    
+    <% if product.sales_status %>
+      <% if customer_signed_in? %>
+        <tr><th><%= render "shared/products/purchase_form", cart_product: @cart_product, product: product, path: public_cart_products_path %></th><td></td></tr>
+      <% else %>
+        <tr><th></th><td><%= link_to "購入", new_customer_session_path, class: "btn btn-info btn-sm" %></td></tr>
+      <% end %>
+    <% end %>
+    
+    <% if admin_signed_in? %>
+      <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id), class: "btn btn-info btn-sm" %></td></tr>
+    <% end %>
+    
+  </table>
 </div>
 
-<table class="table">
-  <tr><th>商品名</th><td><%= product.name %></td></tr>
-  <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
-  <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
-  <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
-  <tr><th>在庫情報</th><td><%= product.status %></td></tr>
-  <% if request.fullpath.include?("admin") %>
-    <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id), class: "btn btn-info btn-sm" %></td></tr>
-  <% end %>
-</table>

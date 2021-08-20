@@ -1,2 +1,71 @@
-<h1>Public::OrderInfos#confirm</h1>
-<p>Find me in app/views/public/order_infos/confirm.html.erb</p>
+<div class="order-infos-confirm">
+  <div class="row">
+    <div class="col-md-2 offset-md-2">
+      <h4 class="">注文情報確認</h4>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-7 ml-5">
+      <table class="table">
+        <thead>
+          <tr>商品名</tr>
+          <tr>単価（税込）</tr>
+          <tr>数量</tr>
+          <tr>小計</tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+        <div class="col-md-1 offset-md-1" style="padding: 0;">
+           <div class="border bg-light d-flex align-items-center price-list">
+             <div class="pl-1">
+               送料
+             </div>
+           </div>
+         </div>
+         <div class="col-md-1" style="padding: 0;">
+           <div class="border d-flex align-items-center price-list">
+             <div class="pl-1">
+               <%= @postage %>
+             </div>
+           </div>
+         </div>
+
+
+     <div class="col-md-2" style="padding: 0;">
+        <div class="border bg-light d-flex align-items-center price-list">
+          <div class="pl-1">
+            商品合計
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2" style="padding: 0;">
+        <div class="border d-flex align-items-center price-list">
+          <div class="pl-1">
+
+          </div>
+        </div>
+      </div>
+
+     <div class="col-md-2" style="padding: 0;">
+        <div class="border bg-light d-flex align-items-center price-list">
+          <div class="pl-1">
+            請求金額
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2" style="padding: 0;">
+        <div class="border d-flex align-items-center price-list">
+          <div class="pl-1">
+
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+</div>
