@@ -14,7 +14,8 @@
       </div>
       <div class="form-group">
         <label for="order-address" class="w-25">配送先</label>
-        〒<%= @order_info.postal_code%>  <%= @order_info.address %>
+        〒<%= @order_info.postal_code%>  <%= @order_info.address %></br>
+        <%= @order_info.name %>
       </div>
       <div class="form-group">
         <label for="payment-method" class="w-25">支払方法</label>
@@ -32,7 +33,7 @@
   </div>
 
   <div class="row order-products-detail">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <table class="table table-hover table-inverse">
       <thead class="bg-light">
         <tr>
@@ -52,8 +53,7 @@
           <td><%=  product.price * product.quantity %></td>
           <td>
           <%= form_with(model:[@order_info, product], url: admin_order_info_order_product_path(@order_info, product), method: :patch, local:true) do |f| %>
-            <%= f.select :order_info, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]],
-                        prompt: status[:"#{product.product_status.to_s}"] %>
+            <%= f.select :product_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]]  %>
             <%= f.submit "更新", class:"btn btn-success" %>
           <% end %>
           </td>
@@ -63,9 +63,20 @@
     </table>
     </div>
 
-    <div class="col-md-4">
-      <p>商品合計　円</p>
-      <p>送料　　　<%= @order_info.postage %></p>
-      <p>請求金額合計　<%= @order_info.total_payment %>円</p>
+    <div class="col-md-2">
+      <table>
+        <tr>
+          <th>商品合計</th>
+          <td class="text-right">
+            <% product_sum = 0 %>
+            <% @order_info.order_products.each do |product| %>
+              <% product_sum += product.price * product.quantity %>
+            <% end %>
+            <%= product_sum.to_s(:delimited) %>円
+          </td>
+        </tr>
+        <tr><th>送料</th><td class="text-right"><%= @order_info.postage.to_s(:delimited) %>円</td></tr>
+        <tt><th>請求金額合計</th><td class="text-right"><%= @order_info.total_payment.to_s(:delimited) %>円</td></tr>
+      </table>
     </div>
   </div>

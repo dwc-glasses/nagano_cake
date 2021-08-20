@@ -19,9 +19,9 @@
       <tbody>
         <% @order_infos.each do |order| %>
         <tr>
-          <td><%= link_to order.created_at, admin_order_info_path(order) %></td>
+          <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_info_path(order) %></td>
           <td><%=  (order.customer.family_name + order.customer.given_name) %></td>
-          <td></td>
+          <td><%= order.order_products.sum(:quantity) %></td>
           <td><%= status[:"#{order.order_status.to_s}" ] %></td>
         </tr>
         <% end %>

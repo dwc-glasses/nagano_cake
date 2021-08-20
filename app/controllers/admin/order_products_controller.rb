@@ -1,7 +1,7 @@
 class Admin::OrderProductsController < Admin::Base
   def update
-    @order_info = OrderInfo.find(params[:order_info_id])
     @order_product = OrderProduct.find(params[:id])
+    @order_info = OrderInfo.find_by(id: @order_product.order_id)
     if @order_product.update(order_product_params)
       redirect_to admin_order_info_path(@order_info)
     else
