@@ -8,7 +8,7 @@
         <ul class="navbar-nav ml-auto">
            <% if customer_signed_in? %>
            <!--User is alreadey log in-->
-              <div class="nav-item welcome-text p-2 rounded-pill d-flex align-items-center">
+              <div class="nav-item welcome-text p-2 pr-4 pl-4 rounded-pill d-flex align-items-center">
                 ようこそ<%= Customer.find(current_customer.id).family_name %>さん！
               </div>
               <li class="nav-item pl-4 active">

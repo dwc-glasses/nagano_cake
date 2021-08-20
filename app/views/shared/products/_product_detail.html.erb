@@ -13,7 +13,7 @@
     <% if product.sales_status %>
       <% if customer_signed_in? %>
         <tr><th><%= render "shared/products/purchase_form", cart_product: @cart_product, product: product, path: public_cart_products_path %></th><td></td></tr>
-      <% else %>
+      <% elsif !admin_signed_in? %>
         <tr><th></th><td><%= link_to "購入", new_customer_session_path, class: "btn btn-info btn-sm" %></td></tr>
       <% end %>
     <% end %>
