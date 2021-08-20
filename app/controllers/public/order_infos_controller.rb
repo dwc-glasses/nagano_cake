@@ -13,11 +13,11 @@ class Public::OrderInfosController < Public::Base
   end
 
   def create
-    @order_info = OrderInfo.new(order_ifo_params)
+    @order_info = OrderInfo.new(order_info_params)
   end
 
   def confirm
-    @order_info = order_ifo_params
+    @order_info = order_info_params
     @postage = 800
   end
 
@@ -25,7 +25,7 @@ class Public::OrderInfosController < Public::Base
   end
 
   private
-  def order_ifo_params
+  def order_info_params
     params.require(:order_info).permit(:postage, :total_payment, :payment_method, :order_status, :postal_code, :address, :name)
   end
 
