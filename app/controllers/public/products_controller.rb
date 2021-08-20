@@ -1,4 +1,4 @@
-class Public::ProductsController < ApplicationController
+class Public::ProductsController < Public::Base
     
   def index
     @products = Product.all

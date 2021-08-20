@@ -1,4 +1,4 @@
-class Public::CartProductsController < ApplicationController
+class Public::CartProductsController < Public::Base
 
   def index
     @cart_products = CartProduct.where(customer_id: current_customer.id)
