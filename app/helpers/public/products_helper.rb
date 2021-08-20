@@ -1,19 +1,10 @@
 module Public::ProductsHelper
   def product_form_hash
-    hash = { :image => ["商品イメージ", :attachment],
-                        :name => ["商品名", :field],
-                        :introduction => ["商品説明", :area],
-                        :genre_id => ["ジャンル", :genre],
-                        :price => ["価格（税抜き）", :field]  }
+    hash = {  :image => {:label => "商品画像", :form => :attachment },
+              :name => {:label => "商品名", :form => :field, :placeholder => "商品名" },
+              :introduction => {:label => "商品説明", :form => :area, :placeholder => "ここに説明文を記述します" },
+              :genre_id => {:label => "ジャンル", :form => :genre },
+              :price => {:label => "税抜き価格", :form => :field, :placeholder => "1000", :option => "円" } }
     return hash
   end
-  
-  def genre_form_array
-    array = Array.new
-      Genre.all.each do |g|
-        array << [g.name, g.id]
-      end 
-    return array
-  end
-  
 end
