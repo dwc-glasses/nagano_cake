@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_customer!, except: [:top, :about]
+  before_action :authenticate_customer!, except: [:pubtop, :about]
 
   def after_sign_in_path_for(resource)
     case resource

@@ -53,12 +53,12 @@ body {
     .top-img {
       margin-right: 10px;
     }
-  
+
     .top-txt {
       line-height: 400%;
     }
   }
-  
+
   .top-products {
     display: flex;
   }
@@ -69,14 +69,23 @@ body {
 
 .about{
   display: flex;
-  
+
   .about-img {
     margin-right: 10px;
   }
-  
+
   .about-txt {
     line-height: 400%;
   }
-  
+
+
+}
+
+.order-infos-confirm{
+  .price-list{
+    margin: 0;
+    height: 30px;
+    width: 100px;
+  }
 
 }

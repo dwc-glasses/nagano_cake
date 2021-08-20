@@ -18,6 +18,7 @@ class Public::OrderInfosController < ApplicationController
 
   def confirm
     @order_info = order_ifo_params
+    @postage = 800
   end
 
   def complete
