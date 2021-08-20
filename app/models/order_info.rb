@@ -5,5 +5,5 @@ class OrderInfo < ApplicationRecord
 
 
   belongs_to :customer
-  has_many :order_products, inverse_of:"order_info"
+  has_many :order_products, foreign_key: "order_id"
 end

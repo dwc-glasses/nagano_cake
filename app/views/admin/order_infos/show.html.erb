@@ -1,4 +1,5 @@
-<% status = { 0: "着手不可", 1: "製作待ち", 2:"製作中", 3:"制作完了" } %>
+<% status = { '0': "着手不可", '1': "製作待ち", '2':"製作中", '3':"制作完了" } %>
+<% pay_method = {"0": "クレジットカード", "1": "銀行振込"} %>
 
 <div class="row order-detail">
     <div class="col-md-12">
@@ -13,21 +14,20 @@
       </div>
       <div class="form-group">
         <label for="order-address" class="w-25">配送先</label>
-        "〒" + <%= @order_info.postal_code %> + <%= @order_info.address %>
+        〒<%= @order_info.postal_code%>  <%= @order_info.address %>
       </div>
       <div class="form-group">
         <label for="payment-method" class="w-25">支払方法</label>
-        <%= @order_info.payment_method %>
+        <%= pay_method[:"#{@order_info.payment_method.to_s}"] %>
       </div>
       <%= form_with model:@order_info, url:admin_order_info_path(@order_info), local:true do |f| %>
       <div class="form-group">
         <label for="order-status" class="w-25">注文ステータス</label>
         <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2],
                                      ["発送準備中", 3], ["発送済み", 4]] %>
-      </div>
-      <div class="form-group">
         <%= f.submit '更新',class:"btn btn-success" %>
       </div>
+      <% end %>
     </div>
   </div>
 
@@ -38,6 +38,7 @@
         <tr>
           <th>商品名</th>
           <th>単価（税込）</th>
+          <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
         </tr>
@@ -45,14 +46,14 @@
       <tbody>
         <% @order_info.order_products.each do |product| %>
         <tr>
-          <td><%=  product.name %></td>
+          <td><%=  product.product.name %></td>
           <td><%=  product.price %></td>
-          <td><%=  product.price * product.amount %></td>
+          <td><%= product.quantity %></td>
+          <td><%=  product.price * product.quantity %></td>
           <td>
-          <%= form_with {model:@order_info, product},
-                        url:admin_order_info_order_product_path(@order_info, product), method: :patch %>
+          <%= form_with(model:[@order_info, product], url: admin_order_info_order_product_path(@order_info, product), method: :patch, local:true) do |f| %>
             <%= f.select :order_info, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]],
-                        prompt: status[:product_status] %>
+                        prompt: status[:"#{product.product_status.to_s}"] %>
             <%= f.submit "更新", class:"btn btn-success" %>
           <% end %>
           </td>
@@ -63,7 +64,7 @@
     </div>
 
     <div class="col-md-4">
-      <p>商品合計　<%= #カラムの合計考える %>円</p>
+      <p>商品合計　円</p>
       <p>送料　　　<%= @order_info.postage %></p>
       <p>請求金額合計　<%= @order_info.total_payment %>円</p>
     </div>

@@ -1,4 +1,4 @@
-<% status = { 0: "入金待ち", 1: "入金確認", 2:"製作中", 3:"発送準備中", 4:"発送中" } %>
+<% status = { '0': "入金待ち", '1': "入金確認", '2':"製作中", '3':"発送準備中", '4':"発送中" } %>
 
 
 <div class="row">
@@ -19,10 +19,10 @@
       <tbody>
         <% @order_infos.each do |order| %>
         <tr>
-          <td><%= order.created_at %></td>
+          <td><%= link_to order.created_at, admin_order_info_path(order) %></td>
           <td><%=  (order.customer.family_name + order.customer.given_name) %></td>
-          <td><%= #注文個数 %></td>
-          <td><%= status[:order.order_status ] %></td>
+          <td></td>
+          <td><%= status[:"#{order.order_status.to_s}" ] %></td>
         </tr>
         <% end %>
       </tbody>

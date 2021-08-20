@@ -37,8 +37,26 @@ genre.each do |genre|
 end
 
 Admin.create!(
-  email:    "megane@glasses",
+  email:    "megane@gmail.com",
   password: "adminadmin"
+  )
+
+Product.create!(
+  name: "いちごケーキ",
+  introduction: "いちごケーキだよ",
+  genre_id: 1,
+  price: 300,
+  image_id: "something",
+  sales_status: true
+  )
+
+Product.create!(
+  name: "りんごケーキ",
+  introduction: "りんごケーキだよ",
+  genre_id: 1,
+  price: 400,
+  image_id: "something",
+  sales_status: true
   )
 
 OrderInfo.create!(
@@ -47,7 +65,7 @@ OrderInfo.create!(
   total_payment: 2000,
   payment_method: 1,
   order_status: 0,
-  postal_code: Faker::Number.(digits:7),
+  postal_code: Faker::Number.number(digits:7),
   address: Faker::Address.street_address,
   name: Gimei.kanji
   )
