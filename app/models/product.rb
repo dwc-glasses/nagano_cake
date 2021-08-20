@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :cart_products, dependent: :destroy
   belongs_to :genre
 
+  has_many :order_products, dependent: :destroy
+
   TAX_RATE = 1.1
 
   def tax_price
