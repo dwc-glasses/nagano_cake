@@ -16,7 +16,7 @@
         <% if product.sales_status %>
           <td class="text-success"><%= product.status %></td>
         <% else %>
-          <td class="text-secondary">販売停止中</td>
+          <td class="text-secondary"><%= product.status %></td>
         <% end %>
       </tr>
     <% end %>

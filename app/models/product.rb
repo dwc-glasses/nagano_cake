@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   end
 
   def status
-    self.sales_status == true ? "販売中" : "売り切れ"
+    self.sales_status == true ? "販売中" : "販売停止中"
   end
 
 end
