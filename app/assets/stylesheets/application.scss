@@ -8,6 +8,10 @@
 
 .header-main{
     background-color: $iceblue;
+    .welcome-text {
+      background-color: $light_green;
+      color: white;
+    }
 }
 
 .footer-main{

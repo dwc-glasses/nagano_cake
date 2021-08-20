@@ -4,13 +4,13 @@
       <h1 class="m-0">
           <%= link_to "NAGANO CAKE", public_root_path, class:"navbar-brand d-block" %>
       </h1>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#grobalNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div id="grobalNav" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
            <% if customer_signed_in? %>
            <!--User is alreadey log in-->
+              <div class="nav-item welcome-text p-2 rounded-pill d-flex align-items-center">
+                ようこそ<%= Customer.find(current_customer.id).family_name %>さん！
+              </div>
               <li class="nav-item pl-4 active">
                 <%= link_to "MyPage", public_customers_path, class:"nav-link text-center" %>
               </li>
