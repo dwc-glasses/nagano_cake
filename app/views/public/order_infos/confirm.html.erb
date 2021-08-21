@@ -59,9 +59,9 @@
         <div class="" style="padding: 0;">
           <div class="border d-flex align-items-center price-list">
             <div class="pl-1">
-              <% @total_payment = 0 %>
-              <% @price_array.each { |price| @total_payment = @total_payment + price } %>
-              <%= @total_payment.to_s(:delimited) %>
+              <% @total_product_payment = 0 %>
+              <% @price_array.each { |price| @total_product_payment = @total_product_payment + price } %>
+              <%= @total_product_payment.to_s(:delimited) %>
             </div>
           </div>
         </div>
@@ -78,7 +78,8 @@
         <div class="" style="padding: 0;">
           <div class="border d-flex align-items-center price-list">
             <div class="pl-1">
-              <%= (@postage + @total_payment).to_s(:delimited) %>
+              <% @total_payment = @postage + @total_product_payment %>
+              <%= @total_payment.to_s(:delimited) %>
             </div>
           </div>
         </div>

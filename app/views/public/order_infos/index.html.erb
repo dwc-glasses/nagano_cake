@@ -2,7 +2,7 @@
   <div class="row">
       <h4 class="col-md-2 offset-md-1">注文履歴一覧</h4>
   </div>
-  <div class="row">
+  <div class="row pt-4">
     <table class="table table-bordered col">
       <thead>
         <tr class="bg-light">
@@ -43,8 +43,7 @@
               <%= "発送済み" %>
             <% end %>
           </td>
-          <td><%= link_to "注文詳細",  %></td>
-
+          <td><%= link_to "表示する", public_order_info_path(order_info.id), {class: "btn btn-primary"} %></td>
           </tr>
         <% end %>
       </tbody>
