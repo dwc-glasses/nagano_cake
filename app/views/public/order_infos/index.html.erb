@@ -1,2 +1,53 @@
-<h1>Public::OrderInfos#index</h1>
-<p>Find me in app/views/public/order_infos/index.html.erb</p>
+<div class="order-infos-index">
+  <div class="row">
+      <h4 class="col-md-2 offset-md-1">注文履歴一覧</h4>
+  </div>
+  <div class="row">
+    <table class="table table-bordered col">
+      <thead>
+        <tr class="bg-light">
+          <th>注文日</th>
+          <th>配送先</th>
+          <th>注文商品</th>
+          <th>支払金額</th>
+          <th>ステータス</th>
+          <th>注文詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_infos.each do |order_info| %>
+        <tr>
+          <td><%= order_info.created_at.strftime('%Y/%m/%d') %></td>
+          <td>〒<%= order_info.postal_code %><br><%= order_info.address %><br><%= order_info.name %></td>
+          <td>
+            <% ordered_products_recode = Product.find((order_info.order_products).pluck(:product_id)) %>
+            <% ordered_products_name = Array.new %>
+            <% ordered_products_name << ordered_products_recode.pluck(:name) %>
+            <% for product_name_array in ordered_products_name do %>
+              <% for product_name in product_name_array do%>
+                <%= product_name %><br>
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= order_info.total_payment %></td>
+          <td>
+            <% if order_info.order_status == 0 %>
+              <%= "入金待ち" %>
+            <% elsif order_info.order_status == 1 %>
+              <%= "入金確認" %>
+            <% elsif order_info.order_status == 2 %>
+              <%= "制作中" %>
+            <% elsif order_info.order_status == 3 %>
+              <%= "発送準備中" %>
+            <% elsif order_info.order_status == 4 %>
+              <%= "発送済み" %>
+            <% end %>
+          </td>
+          <td><%= link_to "注文詳細",  %></td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

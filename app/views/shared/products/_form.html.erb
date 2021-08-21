@@ -1,8 +1,13 @@
 <% product_hash = { :image => ["商品イメージ", :attachment],
                     :name => ["商品名", :field],
                     :introduction => ["商品説明", :area],
-                    :genre_id => ["ジャンル", :field],
+                    :genre_id => ["ジャンル", :genre],
                     :price => ["価格（税抜き）", :field]  }%>
+                    
+<% genre_array = Array.new
+  Genre.all.each do |g|
+    genre_array << [g.name, g.id]
+  end %>
 
 <%= form_with model: product, url: path, local: true do |f| %>
   <% product_hash.each do |key, value| %>
@@ -14,13 +19,15 @@
         <%= f.attachment_field key %>
       <% elsif value[1] == :area %>
         <%= f.text_area key %>
+      <% elsif value[1] == :genre %>
+        <%= f.select key, genre_array %>
       <% end %>
     </div>
   <% end %>
 
   <div>
     <%= f.label :sales_status, '商品説明' %>
-    <%= f.select :sales_status, [['販売中',0],['売り切れ',1]], { include_blank: true, selected: 0 } %>
+    <%= f.select :sales_status, [['販売中',true],['売り切れ',false]]%>
   </div>
 
   <%= f.submit "送信" %>

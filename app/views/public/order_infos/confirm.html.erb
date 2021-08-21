@@ -1,2 +1,116 @@
-<h1>Public::OrderInfos#confirm</h1>
-<p>Find me in app/views/public/order_infos/confirm.html.erb</p>
+<div class="order-infos-confirm">
+  <div class="row">
+      <h4 class="col-md-2 offset-md-1">注文情報確認</h4>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-7">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <th>商品名 </th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @price_array = [] %>
+          <% @cart_products.each do |cart_product| %>
+            <% product = cart_product.product %>
+            <% @price_array << ((product.price*1.1)*cart_product.quantity).floor %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= (product.price*1.1).floor.to_s(:delimited) %></td>
+            <td><%= cart_product.quantity %></td>
+            <td><%= (((product.price*1.1).floor)*(cart_product.quantity)).to_s(:delimited) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4 offset-md-1">
+      <div class="form-inline">
+         <div class="price-list" style="padding: 0;">
+            <div class="border bg-light d-flex align-items-center price-list">
+              <div class="pl-1">
+                送料
+              </div>
+            </div>
+          </div>
+          <div class="price-list" style="padding: 0;">
+            <div class="border d-flex align-items-center price-list">
+              <div class="pl-1">
+                <%= @postage %>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="form-inline">
+       <div class="price-list" style="padding: 0;">
+          <div class="border bg-light d-flex align-items-center price-list">
+            <div class="pl-1">
+              商品合計
+            </div>
+          </div>
+        </div>
+        <div class="" style="padding: 0;">
+          <div class="border d-flex align-items-center price-list">
+            <div class="pl-1">
+              <% @total_payment = 0 %>
+              <% @price_array.each { |price| @total_payment = @total_payment + price } %>
+              <%= @total_payment.to_s(:delimited) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+       <div class="" style="padding: 0;">
+          <div class="border bg-light d-flex align-items-center price-list">
+            <div class="pl-1">
+              請求金額
+            </div>
+          </div>
+        </div>
+        <div class="" style="padding: 0;">
+          <div class="border d-flex align-items-center price-list">
+            <div class="pl-1">
+              <%= (@postage + @total_payment).to_s(:delimited) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <h4 class="col-md-2 mt-4 text-right">支払方法</h4>
+      <h5 class="col-md-2 mt-4 d-flex align-items-end">
+        <% if @order_info["payment_method"] == "0" %>
+          <%= "クレジットカード" %>
+        <% elsif @order_info["payment_method"] == "1" %>
+          <%= "銀行振込" %>
+        <% else %>
+          <%= "無効な支払方法です" %>
+        <% end %>
+      </h5>
+  </div>
+
+  <div class="row">
+    <h4 class="col-md-2 mt-4 text-right">お届け先</h4>
+    <h5 class="col-md-8 mt-4 d-flex align-items-end">
+      〒<%= @order_info["postal_code"] %> <%=@order_info["address"] %><br><%= @order_info["name"] %>
+    </h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 offset-md-4 mt-3">
+      <%= link_to "注文を確定する", public_order_infos_path(order_info: {:postage => @postage, :total_payment => @total_payment, :payment_method => @order_info["payment_method"], :order_status => 0,
+        :postal_code => @order_info["postal_code"], :address => @order_info["address"], :name => @order_info["name"]}), method: :post, class: "btn btn-success"
+      %>
+    </div>
+  </div>
+</div>
