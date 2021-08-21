@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
   attachment :image
+
   validates :name, :introduction, :genre_id, :price, :image_id, presence: true
+  has_many :cart_products, dependent: :destroy
+  belongs_to :genre
+  has_many :order_products, dependent: :destroy
 
   TAX_RATE = 1.1
 
