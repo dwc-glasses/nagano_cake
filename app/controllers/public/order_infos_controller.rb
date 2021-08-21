@@ -35,10 +35,13 @@ class Public::OrderInfosController < Public::Base
   end
 
   def confirm
-    if params[:payment_method] == nil || params[:order_address] == nil
+    #支払い方法、宛先が未選択だった場合はエラー
+    if params[:payment_method].nil? || params[:order_address].nil?
       flash[:notice] = "入力を確認してください"
       render :new
     end
+
+    #宛先の新規登録で、いずれかが未記入の場合にエラーを起こす機能がまだです
 
     @order_info = OrderInfo.new
     order_address = params[:order_address]
