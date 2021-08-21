@@ -2,8 +2,6 @@ class Public::OrderInfosController < Public::Base
   before_action :move_to_signed_in
 
   def new
-    @order_info = OrderInfo.new
-    @customer_addresses = Address.where(customer_id: current_customer.id)
   end
 
   def index
@@ -38,7 +36,33 @@ class Public::OrderInfosController < Public::Base
   end
 
   def confirm
-    @order_info = order_info_params
+    #支払い方法、宛先が未選択だった場合はエラー
+    if params[:payment_method].nil? || params[:order_address].nil?
+      flash[:notice] = "入力を確認してください"
+      render :new
+    end
+
+    #宛先の新規登録で、いずれかが未記入の場合にエラーを起こす機能がまだです
+
+    @order_info = OrderInfo.new
+    order_address = params[:order_address]
+    @payment_method = params[:payment_method]
+
+    if order_address == "selected_address"
+      @address = Address.find(params[:select_address].to_i).address
+      @postal_code = Address.find(params[:select_address].to_i).postal_code
+      @name = Address.find(params[:select_address].to_i).name
+    elsif order_address == "my_address"
+      @address = current_customer.address
+      @postal_code = current_customer.postal_code
+      @name = current_customer.family_name + current_customer.given_name
+    elsif order_address == "new_address"
+      @address = params[:address]
+      @postal_code = params[:postal_code]
+      @name = params[:name]
+      Address.create(address: @address, postal_code: @postal_code, name: @name, customer_id: current_customer.id)
+    end
+
     @cart_products = current_customer.cart_products
     @postage = 800
   end
