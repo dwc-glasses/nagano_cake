@@ -2,7 +2,6 @@ class Public::OrderInfosController < Public::Base
   before_action :move_to_signed_in
 
   def new
-    @address = Address.new
   end
 
   def index
@@ -48,7 +47,6 @@ class Public::OrderInfosController < Public::Base
     @payment_method = params[:payment_method]
 
     if order_address == "selected_address"
-      selected_address = params[:select_address]
       @address = Address.find(params[:select_address].to_i).address
       @postal_code = Address.find(params[:select_address].to_i).postal_code
       @name = Address.find(params[:select_address].to_i).name
