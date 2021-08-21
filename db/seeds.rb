@@ -41,23 +41,23 @@ Admin.create!(
   password: "adminadmin"
   )
 
-# Product.create!(
-#   name: "いちごケーキ",
-#   introduction: "いちごケーキだよ",
-#   genre_id: 1,
-#   price: 300,
-#   image_id: "something",
-#   sales_status: true
-#   )
+Product.create!(
+  name: "いちごケーキ",
+  introduction: "いちごケーキだよ",
+  genre_id: 1,
+  price: 300,
+  image_id: "something",
+  sales_status: true
+  )
 
-# Product.create!(
-#   name: "りんごケーキ",
-#   introduction: "りんごケーキだよ",
-#   genre_id: 1,
-#   price: 400,
-#   image_id: "something",
-#   sales_status: true
-#   )
+Product.create!(
+  name: "りんごケーキ",
+  introduction: "りんごケーキだよ",
+  genre_id: 1,
+  price: 400,
+  image_id: "something",
+  sales_status: true
+  )
 
 # OrderInfo.create!(
 #   customer_id: 1,
