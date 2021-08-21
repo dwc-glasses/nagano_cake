@@ -89,9 +89,9 @@
   <div class="row">
       <h4 class="col-md-2 mt-4 text-right">支払方法</h4>
       <h5 class="col-md-2 mt-4 d-flex align-items-end">
-        <% if @order_info["payment_method"] == "0" %>
+        <% if @payment_method == "0" %>
           <%= "クレジットカード" %>
-        <% elsif @order_info["payment_method"] == "1" %>
+        <% elsif @payment_method == "1" %>
           <%= "銀行振込" %>
         <% else %>
           <%= "無効な支払方法です" %>
@@ -102,14 +102,14 @@
   <div class="row">
     <h4 class="col-md-2 mt-4 text-right">お届け先</h4>
     <h5 class="col-md-8 mt-4 d-flex align-items-end">
-      〒<%= @order_info["postal_code"] %> <%=@order_info["address"] %><br><%= @order_info["name"] %>
+      〒<%= @postal_code %> <%= @address %><br><%= @name %>
     </h5>
   </div>
 
   <div class="row">
     <div class="col-md-2 offset-md-4 mt-3">
-      <%= link_to "注文を確定する", public_order_infos_path(order_info: {:postage => @postage, :total_payment => @total_payment, :payment_method => @order_info["payment_method"], :order_status => 0,
-        :postal_code => @order_info["postal_code"], :address => @order_info["address"], :name => @order_info["name"]}), method: :post, class: "btn btn-success"
+      <%= link_to "注文を確定する", public_order_infos_path(order_info: {:postage => @postage, :total_payment => @total_payment, :payment_method => @payment_method.to_i, :order_status => 0,
+        :postal_code => @postal_code, :address => @address, :name => @name}), method: :post, class: "btn btn-success"
       %>
     </div>
   </div>
