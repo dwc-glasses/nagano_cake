@@ -68,7 +68,33 @@ body {
   }
 }
 
+.main-visual {
+  position: relative;
+  .slider {
+    padding-inline-start: 0px;
+    img {
+    height: 30vw; //ポイント1
+    max-height: 400px; //ポイント2
+    min-height: 350px; //ポイント2
+    }
+  }
 
+  .mv-txt {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #FFF;
+    background-color: $light-green;
+    padding: 8px 12px;
+
+    h3 {
+      font-size: 0.8em;
+      line-height: 1.25;
+    }
+
+  }
+
+}
 
 
 .about{
