@@ -7,13 +7,26 @@
     <tr><th>商品名</th><td><%= product.name %></td></tr>
     <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
     <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
-    <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
-    <tr><th>在庫情報</th><td><%= product.status %></td></tr>
+    
+    <% if admin_signed_in? %>
+      <tr><th>税込価格（税抜き価格）</th><td><%= product.tax_price %> (<%= product.price %>) 円</td></tr>
+    <% else %>
+      <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
+    <% end %>
+    
+    <tr>
+      <th>在庫情報</th>
+        <% if product.sales_status %>
+          <td class="text-success"><%= product.status %></td>
+        <% else %>
+          <td class="text-secondary"><%= product.status %></td>
+        <% end %>
+    </tr>
     
     <% if product.sales_status %>
       <% if customer_signed_in? %>
         <tr><th><%= render "shared/products/purchase_form", cart_product: @cart_product, product: product, path: public_cart_products_path %></th><td></td></tr>
-      <% else %>
+      <% elsif !admin_signed_in? %>
         <tr><th></th><td><%= link_to "購入", new_customer_session_path, class: "btn btn-info btn-sm" %></td></tr>
       <% end %>
     <% end %>

@@ -8,6 +8,10 @@
 
 .header-main{
     background-color: $iceblue;
+    .welcome-text {
+      background-color: $light_green;
+      color: white;
+    }
 }
 
 .footer-main{
@@ -88,4 +92,10 @@ body {
     width: 100px;
   }
 
+}
+
+.product-index {
+ .plus-icon  {
+   color: $light_green;
+ }
 }
