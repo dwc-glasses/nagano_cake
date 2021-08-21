@@ -3,6 +3,7 @@ class OrderInfo < ApplicationRecord
             :order_status, :postal_code, :address, :name,
             presence: true
 
+
   def full_name(family_name, given_name)
     "#{family_name} #{given_name}"
   end

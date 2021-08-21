@@ -12,6 +12,7 @@ class Public::OrderInfosController < Public::Base
 
   def show
     @order_info = OrderInfo.find(params[:id])
+    @postage = 800
   end
 
   def create

@@ -94,8 +94,37 @@ body {
 
 }
 
+
+.public-order-infos-show{
+  .order-info-label{
+    width: 150px;
+    height: 50px;
+  }
+  .order-info-data{
+    width: 400px;
+    height: 50px;
+  }
+  .order-info-address-label{
+    width: 150px;
+    height: 80px;
+  }
+  .order-info-address-data{
+    width: 400px;
+    height: 80px;
+  }
+  .payment-info{
+    width: 175px;
+    height: 50px;
+  }
+  .order_product{
+    width: 500px;
+  }
+  .order-contents{
+    margin-left: 15px;
+  }
+}
+
 .product-index {
  .plus-icon  {
    color: $light_green;
- }
 }
