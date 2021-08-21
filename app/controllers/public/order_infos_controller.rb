@@ -8,10 +8,6 @@ class Public::OrderInfosController < Public::Base
 
   def index
     @order_infos = OrderInfo.where(customer_id: current_customer.id)
-    @ordered_products_recode = Product.find((order_info.order_products).pluck(:product_id))
-    end
-    @ordered_products_name = Array.new
-    @ordered_products_name << @ordered_products_recode.pluck(:name)
   end
 
   def show
