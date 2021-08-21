@@ -16,15 +16,15 @@ class Public::SearchsController < Public::Base
   end
 
   def forward(value)
-    Genre.where("name LIKE ?", "#{value}%").or(Product.where("name LIKE ?", "#{value}%"))
+    Product.where("name LIKE ?", "#{value}%")
   end
 
   def backward(value)
-    Genre.where("name LIKE ?", "%#{value}").or(Product.where("name LIKE ?", "%#{value}"))
+    Product.where("name LIKE ?", "%#{value}")
   end
 
   def partical(value)
-    Genre.where("name LIKE ?", "%#{value}%").or(Product.where("name LIKE ?", "%#{value}%"))
+    Product.where("name LIKE ?", "%#{value}%")
   end
 
   def search_for(value, how)
