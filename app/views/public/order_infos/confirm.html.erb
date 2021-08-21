@@ -108,8 +108,8 @@
 
   <div class="row">
     <div class="col-md-2 offset-md-4 mt-3">
-      <%= link_to "注文を確定する", public_order_infos_path(:postage => @postage, :total_payment => @total_payment, :payment_method => @order_info["payment_method"], :order_status => 0,
-        :postal_code => @order_info["postal_code"], :address => @order_info["address"], :name => @order_info["name"]), method: :post, class: "btn btn-success"
+      <%= link_to "注文を確定する", public_order_infos_path(order_info: {:postage => @postage, :total_payment => @total_payment, :payment_method => @order_info["payment_method"], :order_status => 0,
+        :postal_code => @order_info["postal_code"], :address => @order_info["address"], :name => @order_info["name"]}), method: :post, class: "btn btn-success"
       %>
     </div>
   </div>
