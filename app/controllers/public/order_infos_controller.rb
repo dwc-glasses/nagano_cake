@@ -16,6 +16,7 @@ class Public::OrderInfosController < Public::Base
   end
 
   def create
+
     @order_info = current_customer.order_infos.new(order_info_params)
     if @order_info.save!
       cart_products = current_customer.cart_products

@@ -1,6 +1,6 @@
 <div class="error-message text-danger">
 <% if model.errors.any? %>
-  <p><%= model.errors.count %> errors phohibited this obj from being saved</p>
+  <p><%= model.errors.count %> つのエラーがあります。</p>
   <% model.errors.full_messages.each do |message| %>
     <p>・<%= message %></p>
   <% end %>

@@ -1,9 +1,9 @@
 class Product < ApplicationRecord
   attachment :image
-  validates :name, :genre_id, :price, presence: true
+
+  validates :name, :introduction, :genre_id, :price, :image_id, presence: true
   has_many :cart_products, dependent: :destroy
   belongs_to :genre
-
   has_many :order_products, dependent: :destroy
 
   TAX_RATE = 1.1
@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   end
 
   def status
-    self.sales_status == true ? "販売中" : "売り切れ"
+    self.sales_status == true ? "販売中" : "販売停止中"
   end
 
 end

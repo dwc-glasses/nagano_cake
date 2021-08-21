@@ -8,6 +8,10 @@
 
 .header-main{
     background-color: $iceblue;
+    .welcome-text {
+      background-color: $light_green;
+      color: white;
+    }
 }
 
 .footer-main{
@@ -90,6 +94,7 @@ body {
 
 }
 
+
 .public-order-infos-show{
   .order-info-label{
     width: 150px;
@@ -117,4 +122,9 @@ body {
   .order-contents{
     margin-left: 15px;
   }
+}
+
+.product-index {
+ .plus-icon  {
+   color: $light_green;
 }

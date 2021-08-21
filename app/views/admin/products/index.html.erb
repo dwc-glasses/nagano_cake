@@ -1,2 +1,28 @@
-<!--商品一覧-->
-<%= render "shared/products/products_list", products: @products %>
+<div class="row product-index">
+  <h2>商品一覧</h2>
+  <%= link_to new_admin_product_path, class:" ml-auto" do %>
+    <i class="fas fa-plus fa-2x plus-icon mb-3"></i>
+  <% end %>
+</div>
+
+
+  <table class="table">
+    <tr>
+        <th>商品ID</th> <th>商品名</th> <th>税抜価格</th>  <th>ジャンル</th> <th>ステータス</th>
+    </tr>
+
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td><%= product.price %></td>
+        <td><%= Genre.find(product.genre_id).name %></td>
+        <% if product.sales_status %>
+          <td class="text-success"><%= product.status %></td>
+        <% else %>
+          <td class="text-secondary"><%= product.status %></td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  </table>
