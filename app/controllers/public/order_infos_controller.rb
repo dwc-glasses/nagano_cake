@@ -2,6 +2,7 @@ class Public::OrderInfosController < Public::Base
   before_action :move_to_signed_in
 
   def new
+
   end
 
   def index
@@ -44,7 +45,6 @@ class Public::OrderInfosController < Public::Base
 
     #宛先の新規登録で、いずれかが未記入の場合にエラーを起こす機能がまだです
 
-    @order_info = OrderInfo.new
     order_address = params[:order_address]
     @payment_method = params[:payment_method]
 
@@ -60,6 +60,12 @@ class Public::OrderInfosController < Public::Base
       @address = params[:address]
       @postal_code = params[:postal_code]
       @name = params[:name]
+      test_empty_array = [@address, @postal_code, @name]
+
+      if test_empty_array.any? {|v| v.empty? }
+        flash[:notice] = "入力した配送先を確認してください"
+        render :new
+      end
       Address.create(address: @address, postal_code: @postal_code, name: @name, customer_id: current_customer.id)
     end
 
