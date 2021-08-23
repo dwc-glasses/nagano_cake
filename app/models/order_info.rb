@@ -13,5 +13,5 @@ class OrderInfo < ApplicationRecord
   end
 
   belongs_to :customer
-  has_many :order_products, foreign_key: "order_id"
+  has_many :order_products, class_name: "OrderProduct", foreign_key: "order_id", dependent: :destroy
 end

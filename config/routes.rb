@@ -45,17 +45,19 @@ Rails.application.routes.draw do
     patch '/customers/suspended' => 'customers#suspended'
 
     resources :addresses,     except:[:show, :new]
-    resources :products,      only:[:index, :show]
+    resources :products,      only:[:index, :show] do
+      resources :comments,    only:[:create]
+    end
     resources :cart_products, only:[:index, :create, :update, :destroy]
 
     #cart_producst
     get '/cart_products/delete_all' => 'cart_products#delete_all'
-    
+
     #order_infos
     get '/order_infos/confirm'         => 'order_infos#confirm'
     get '/order_infos/complete'        => 'order_infos#complete'
     resources :order_infos,  only:[:index, :show, :new, :create]
-    
+
     #searchs
     get '/search' => 'searchs#search'
 

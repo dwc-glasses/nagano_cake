@@ -2,18 +2,18 @@
   <div class="col-4">
     <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x250' %>
   </div>
-  
+
   <table class="table col-6">
     <tr><th>商品名</th><td><%= product.name %></td></tr>
     <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
     <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
-    
+
     <% if admin_signed_in? %>
       <tr><th>税込価格（税抜き価格）</th><td><%= product.tax_price %> (<%= product.price %>) 円</td></tr>
     <% else %>
       <tr><th>価格（税込）</th><td><%= product.tax_price %> 円</td></tr>
     <% end %>
-    
+
     <tr>
       <th>在庫情報</th>
         <% if product.sales_status %>
@@ -22,7 +22,7 @@
           <td class="text-secondary"><%= product.status %></td>
         <% end %>
     </tr>
-    
+
     <% if product.sales_status %>
       <% if customer_signed_in? %>
         <tr><th><%= render "shared/products/purchase_form", cart_product: @cart_product, product: product, path: public_cart_products_path %></th><td></td></tr>
@@ -30,11 +30,31 @@
         <tr><th></th><td><%= link_to "購入", new_customer_session_path, class: "btn btn-info btn-sm" %></td></tr>
       <% end %>
     <% end %>
-    
+
     <% if admin_signed_in? %>
       <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id), class: "btn btn-info btn-sm" %></td></tr>
     <% end %>
-    
+
+    #ここのロジック修正する
+    <% current_customer.order_infos.each do |order|  %>
+      <% if order.order_products.where(id: product.id).exists? %>
+      <tr>
+        <th>コメントする</th>
+        <td>
+          <%= form_with(url:public_product_comments_path(product), method: :post, local:true) do |f| %>
+            <%= f.text_field :body %>
+            <%= f.submit "コメントする", {class:"btn btn-primary ml-3"} %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <th>コメントを見る</th>
+      <td></td>
+    </tr>
+
   </table>
 </div>
+
 
