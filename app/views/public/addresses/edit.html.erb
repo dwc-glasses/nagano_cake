@@ -1,8 +1,11 @@
 <%= render 'layouts/error', model:@address %>
 
+<div class="row">
+  <h2 class="m-3 bg-light">配送先編集</h2>
+</div>
+
 <div class="row edit-address">
   <div class="col-md-10">
-    <h2 class="m-3 bg-light">配送先編集</h2>
     <%=form_with model:@address, url:public_address_path(@address), local:true do |f| %>
       <div class="form-group">
         <label for="postal-code" class="w-25">郵便番号(ハイフンなし)</label>

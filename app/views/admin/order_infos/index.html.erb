@@ -1,8 +1,9 @@
-
+<div class="row">
+  <h2 class="bg-light">直近一週間の売上推移</h2>
+</div>
 <div class="row">
   <div class="col-md-12">
-    <h1>直近一週間の売上推移</h1>
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <canvas id="myChart" width="400" height="150"></canvas>
     <script>
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -29,13 +30,14 @@
   </div>
 </div>
 
-
+<div class="row">
+  <h2 class="mt-5 mb-3 bg-light">
+    注文履歴一覧
+  </h2>
+</div>
 
 <div class="row">
   <div class="col-md-12">
-    <h2 class="m-3 bg-light">
-      注文履歴一覧
-    </h2>
     <%= paginate @order_infos %>
     <table class="table table-hover table-inverse">
       <thead class="bg-light">
