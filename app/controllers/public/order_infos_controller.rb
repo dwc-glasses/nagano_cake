@@ -43,8 +43,6 @@ class Public::OrderInfosController < Public::Base
       render :new
     end
 
-    #宛先の新規登録で、いずれかが未記入の場合にエラーを起こす機能がまだです
-
     order_address = params[:order_address]
     @payment_method = params[:payment_method]
 

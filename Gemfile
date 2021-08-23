@@ -78,3 +78,5 @@ group :test do
 end
 
 gem 'bootsnap', require: false
+gem 'chart-js-rails', '~> 0.1.4'
+

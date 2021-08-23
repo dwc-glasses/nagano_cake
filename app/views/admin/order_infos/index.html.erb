@@ -1,5 +1,37 @@
 <% status = { '0': "入金待ち", '1': "入金確認", '2':"製作中", '3':"発送準備中", '4':"発送中" } %>
 
+<div class="row">
+  <div class="col-md-12">
+    <h1>直近一週間の売上推移</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '前日', '当日'],
+            datasets: [{
+                label: '売上高(円)',
+                data: [ <%= @sales_six_days_ago %>, <%= @sales_five_days_ago %>, <%= @sales_four_days_ago %> ,
+                        <%= @sales_three_days_ago %>, <%= @sales_two_days_ago %>, <%= @sales_a_day_ago %>, <%= @sales_today %> ],
+                borderWidth: 2,
+                backgroundColor:['rgba(100, 159, 64, 0.0)'],
+                borderColor: 'blue',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+  </div>
+</div>
+
+
 
 <div class="row">
   <div class="col-md-12">
