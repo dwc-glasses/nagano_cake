@@ -21,7 +21,7 @@ module FeaturesSpecHelper
       click_button "新規登録"
     end
   end
-  
+
   def upload_cart_product(product)
     visit "/products/#{product.id}"
     within('.cartin') do

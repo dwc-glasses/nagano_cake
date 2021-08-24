@@ -208,51 +208,86 @@ feature 'ログイン状態から開始のfeature' do
     end
     scenario '確認画面へ進むボタンを押下する' do
       visit new_public_order_info_path
-      choose 'クレジットカード'
-      choose '新しいお届け先'
+      within('.orderinfo') do
+      choose 'creditcard'
+      choose 'new-address'
       fill_in 'postal_code', with: '2222222'
       fill_in 'address', with: '地球のどこか'
       fill_in 'name', with: 'テス子'
-      click_link '確認画面へ進む'
+      click_button '確認画面へ進む'
+      end
       expect(current_path).to eq public_order_infos_confirm_path
     end
   end
-
-  feature '注文確認画面' do
-    scenario '注文確定ボタンを押下する' do
-      public_order_infos_confirm_path
-      click_link '注文を確定する'
-      expect(current_path).to eq public_order_infos_complete_path
-    end
-  end
-
-  feature 'サンクスページ' do
-    scenario 'ヘッダーのマイページへのリンクを押下する' do
-      pu
-      click_link 'MyPage'
-      expect(current_path).to eq public_customers_path
-    end
-  end
-
-  feature 'マイページ' do
-    scenario '注文履歴一覧へのリンクを押下する' do
-      within('.to-order-infos-index') do
-        click_link '一覧を見る'
+  
+    feature 'カートに商品があることが前提のテスト' do
+      before do
+        upload_cart_product(@product)
+        visit new_public_order_info_path
+        within('.orderinfo') do
+          choose 'creditcard'
+          choose 'new-address'
+          fill_in 'postal_code', with: '2222222'
+          fill_in 'address', with: '地球のどこか'
+          fill_in 'name', with: 'テス子'
+          click_button '確認画面へ進む'
+        end
       end
-      expect(current_path).to eq  public_order_infos_path
+    
+    feature '注文確認画面' do
+      scenario '注文確定ボタンを押下する' do
+        click_link '注文を確定する'
+        expect(current_path).to eq public_order_infos_complete_path
+      end
     end
-  end
-
-  feature '注文履歴一覧画面' do
-    scenario '先程の注文詳細画面へのリンクを押下する' do
-      page.all('.to-orderinfo-show').last.click
-      expect(current_path).to eq public_order_info_path
+  
+    feature 'サンクスページ' do
+      before do
+        click_link '注文を確定する'
+      end
+      
+      scenario 'ヘッダーのマイページへのリンクを押下する' do
+        click_link 'MyPage'
+        expect(current_path).to eq public_customers_path
+      end
     end
-  end
-
-  feature '注文詳細画面' do
-    scenario '詳細画面を表示' do
-      expect(page).to have_content '入金待ち'
+  
+    feature 'マイページ' do
+      before do
+        click_link '注文を確定する'
+        click_link 'MyPage'
+      end
+      
+      scenario '注文履歴一覧へのリンクを押下する' do
+        within('.to-order-infos-index') do
+          click_link '一覧を見る'
+        end
+        expect(current_path).to eq  public_order_infos_path
+      end
+    end
+    
+    feature '注文済が前提のテスト' do
+      before do
+        click_link '注文を確定する'
+        click_link 'MyPage'
+        within('.to-order-infos-index') do
+          click_link '一覧を見る'
+        end
+        @order_info = OrderInfo.order(:id).last
+      end
+      
+      feature '注文履歴一覧画面' do
+        scenario '先程の注文詳細画面へのリンクを押下する' do
+            click_link '表示する'
+          expect(current_path).to eq "/order_infos/#{@order_info.id}"
+        end
+      end
+    
+      feature '注文詳細画面' do
+        scenario '詳細画面を表示' do
+          expect(page).to have_content '入金待ち'
+        end
+      end
     end
   end
 end
