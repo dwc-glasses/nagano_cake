@@ -38,6 +38,15 @@
 
 <div class="row">
   <div class="col-md-12">
+    <div class="row pb-2">
+      <dib class="offset-md-9">
+        <%= form_with model: @order_inffos, url: admin_order_infos_sales_status_path, method: :get, local: true do |f| %>
+          <%= f.select :sortword, [['入金待ち', 0], ['入金確認', 1], ['制作中', 2], ['発送準備中', 3], ['発送済み', 4]] %>
+          <%= f.submit 'ステータスで絞る' %>
+        <% end %>
+      </dib>
+    </div>
+    
     <%= paginate @order_infos %>
     <table class="table table-hover table-inverse">
       <thead class="bg-light">

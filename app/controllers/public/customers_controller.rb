@@ -23,7 +23,8 @@ class Public::CustomersController < Public::Base
   def suspended
     customer = Customer.find(current_customer.id)
     customer.update({suspended: true})
-    redirect_to action: :show
+    reset_session
+    redirect_to public_root_path
   end
 
   private

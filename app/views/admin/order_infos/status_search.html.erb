@@ -1,0 +1,37 @@
+<% status = { '0': "入金待ち", '1': "入金確認", '2':"製作中", '3':"発送準備中", '4':"発送済み" } %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="m-3 bg-light">
+      注文履歴一覧　”<%= status[:"#{@searchword}"] %>”
+    </h2>
+
+    <%= paginate @order_infos %>
+    <table class="table table-hover table-inverse">
+      <thead class="bg-light">
+        <tr>
+          <th>購入日時</th>
+          <th>購入者</th>
+          <th>注文個数</th>
+          <th>注文ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_infos.each do |order| %>
+        <tr>
+          <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_info_path(order) %></td>
+          <td><%=  (order.customer.family_name + order.customer.given_name) %></td>
+          <td><%= order.order_products.sum(:quantity) %></td>
+          <td>
+            <%= status[:"#{order.order_status.to_s}" ] %><br>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+    <%= link_to "一覧に戻る", admin_order_infos_path, class:"btn btn-info btn-sm offset-10" %>
+</div>
