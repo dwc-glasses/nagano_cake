@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searchs/search'
+  end
+  get 'searchs/search'
   #namespace内ではエラーが出たため外に記述
   devise_for :customers, skip: 'registrations', controllers: {
       sessions:      'customers/sessions',
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
     resources :customers,      only: [:index, :show, :edit, :update]
     resources :products,       except: [:destroy]
     resources :genres,         only: [:index, :edit, :create, :update]
+    get '/order_infos/sales_status' => 'order_infos#status_search'
     resources :order_infos,    only: [:index, :show, :update] do
      resources :order_products, only: [:update]
     end
@@ -46,12 +51,14 @@ Rails.application.routes.draw do
 
     #cart_producst
     get '/cart_products/delete_all' => 'cart_products#delete_all'
-    
 
     #order_infos
     get '/order_infos/confirm'         => 'order_infos#confirm'
     get '/order_infos/complete'        => 'order_infos#complete'
     resources :order_infos,  only:[:index, :show, :new, :create]
+
+    #searchs
+    get '/search' => 'searchs#search'
 
   end
 
