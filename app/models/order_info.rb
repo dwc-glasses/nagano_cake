@@ -28,7 +28,7 @@ class OrderInfo < ApplicationRecord
   end
 
   belongs_to :customer
-  has_many :order_products, foreign_key: "order_id"
+  has_many :order_products, class_name: "OrderProduct", foreign_key: "order_id", dependent: :destroy
 
   scope :scope_six_days_ago, ->   {where(created_at: Time.current.ago(6.days).all_day)}
   scope :scope_five_days_ago, ->  {where(created_at: Time.current.ago(5.days).all_day)}
@@ -37,8 +37,4 @@ class OrderInfo < ApplicationRecord
   scope :scope_two_days_ago, ->   {where(created_at: Time.current.ago(2.days).all_day)}
   scope :scope_a_day_ago, ->      {where(created_at: Time.current.ago(1.days).all_day)}
   scope :scope_today, ->          {where(created_at: Time.current.beginning_of_day..Time.current)}
-
-
-
-
 end

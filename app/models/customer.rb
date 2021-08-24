@@ -12,10 +12,12 @@ class Customer < ApplicationRecord
   validates :phone,             presence: true
   validates :postal_code,       presence: true
   validates :address,           presence: true
-  
+
 
   has_many :cart_products, dependent: :destroy
-  has_many :order_infos, dependent: :destroy
-  has_many :addresses, dependent: :destroy
+  has_many :order_infos,   dependent: :destroy
+  has_many :addresses,     dependent: :destroy
+  has_many :comments,      dependent: :destroy
+
 
 end
