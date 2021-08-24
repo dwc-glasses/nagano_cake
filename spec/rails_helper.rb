@@ -61,5 +61,15 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.include FactoryBot::Syntax::Metho
+  
+  #Devise
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  
+  #FactoryBot
+  config.include FactoryBot::Syntax::Methods
+  
+  #helper
+  Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 end

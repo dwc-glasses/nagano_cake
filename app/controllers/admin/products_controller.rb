@@ -21,7 +21,7 @@ class Admin::ProductsController < Admin::Base
 
     if @product.save
       flash.notice = "商品を追加しました。"
-      redirect_to action: "index"
+      redirect_to admin_product_path(@product.id)
     else
       flash.now.alert = "入力に誤りがあります。"
       render action: "new"
