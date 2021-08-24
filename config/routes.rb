@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       resources :comments,     only:[:destroy]
     end
     resources :genres,         only: [:index, :edit, :create, :update]
+    get '/order_infos/sales_status' => 'order_infos#status_search'
     resources :order_infos,    only: [:index, :show, :update] do
      resources :order_products, only: [:update]
     end

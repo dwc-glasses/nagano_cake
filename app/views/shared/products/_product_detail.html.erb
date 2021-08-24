@@ -6,7 +6,7 @@
   <table class="table col-6">
     <tr><th>商品名</th><td><%= product.name %></td></tr>
     <tr><th>商品説明</th><td><%= product.introduction %></td></tr>
-    <tr><th>ジャンル</th><td><%= product.genre_id %></td></tr>
+    <tr><th>ジャンル</th><td><%= product.genre.name %></td></tr>
 
     <% if admin_signed_in? %>
       <tr><th>税込価格（税抜き価格）</th><td><%= product.tax_price %> (<%= product.price %>) 円</td></tr>
