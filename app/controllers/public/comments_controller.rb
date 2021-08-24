@@ -10,6 +10,11 @@ class Public::CommentsController < Public::Base
       render "public/products/show"
     end
   end
+  
+  def destroy
+    Comment.find_by(id: params[:id], product_id: params[:product_id], customer_id: params[:customer_id]).destroy
+    redirect_to public_product_path(params[:product_id])
+  end
 
   private
   def comment_params

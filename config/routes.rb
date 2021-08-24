@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root to:'homes#top'
     resources :customers,      only: [:index, :show, :edit, :update]
-    resources :products,       except: [:destroy]
+    resources :products,       except: [:destroy] do
+      resources :comments,     only:[:destroy]
+    end
     resources :genres,         only: [:index, :edit, :create, :update]
     resources :order_infos,    only: [:index, :show, :update] do
      resources :order_products, only: [:update]
@@ -46,7 +48,7 @@ Rails.application.routes.draw do
 
     resources :addresses,     except:[:show, :new]
     resources :products,      only:[:index, :show] do
-      resources :comments,    only:[:create]
+      resources :comments,    only:[:create, :destroy]
     end
     resources :cart_products, only:[:index, :create, :update, :destroy]
 

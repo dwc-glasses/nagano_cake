@@ -1,9 +1,4 @@
 <div class="row">
-  <%= render 'layouts/error', model: @comment %>
-</div>
-
-
-<div class="row">
   <div class="col-4">
     <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x250' %>
   </div>
@@ -37,7 +32,7 @@
     <% end %>
 
     <% if admin_signed_in? %>
-      <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id), class: "btn btn-info btn-sm" %></td></tr>
+      <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id),class: "btn btn-info btn-sm" %></td></tr>
     <% end %>
 
     <% if @have_ordered_product == true && @have_already_comment == false %>
@@ -56,7 +51,17 @@
       <th>コメント(<%= product.comments.count %>)</th><td></td>
     </tr>
     <% product.comments.each do |comment| %>
-    <tr><th></th><td><%= comment.body %></td></tr>
+    <tr>
+      <th></th>
+        <td>
+          <%= comment.body %>
+          <% if admin_signed_in? %>
+            <%= link_to "コメントを削除", admin_product_comment_path(product,comment,customer_id:comment.customer.id), method: :delete, class:"btn btn-danger" %>
+          <% elsif comment.customer_id == current_customer.id %>
+            <%= link_to "コメントを削除", public_product_comment_path(product,comment,customer_id:comment.customer.id), method: :delete, class:"btn btn-danger" %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
   </table>
 </div>
