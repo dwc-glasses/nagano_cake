@@ -22,7 +22,7 @@ class Admin::OrderInfosController < Admin::Base
     @order_info = OrderInfo.find(params[:id])
   end
 
-  def updatee
+  def update
     @order_info = OrderInfo.find(params[:id])
     if @order_info.update(order_info_params)
       redirect_to admin_order_info_path(@order_info)
