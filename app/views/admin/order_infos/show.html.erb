@@ -1,16 +1,16 @@
-<% status = { '0': "着手不可", '1': "製作待ち", '2':"製作中", '3':"制作完了" } %>
-<% pay_method = {"0": "クレジットカード", "1": "銀行振込"} %>
+<div class="row">
+  <h2 class="m-5 bg-light">注文履歴詳細</h2>
+</div>
 
 <div class="row order-detail">
     <div class="col-md-12">
-      <h2 class="m-5 bg-light">注文履歴詳細</h2>
       <div>
         <label for="customer-name" class="w-25">購入者</label>
         <%= @order_info.customer.family_name + " " + @order_info.customer.given_name %>
       </div>
       <div class="form-group">
         <label for="order-date" class="w-25">注文日</label>
-        <%= @order_info.created_at %>
+        <%= @order_info.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
       </div>
       <div class="form-group">
         <label for="order-address" class="w-25">配送先</label>
@@ -19,14 +19,14 @@
       </div>
       <div class="form-group">
         <label for="payment-method" class="w-25">支払方法</label>
-        <%= pay_method[:"#{@order_info.payment_method.to_s}"] %>
+        <%= payment_method_hash[:"#{@order_info.payment_method}"] %>
       </div>
       <%= form_with model:@order_info, url:admin_order_info_path(@order_info), local:true do |f| %>
       <div class="form-group">
         <label for="order-status" class="w-25">注文ステータス</label>
         <%= f.select :order_status, [["入金待ち", 0], ["入金確認", 1], ["製作中", 2],
                                      ["発送準備中", 3], ["発送済み", 4]] %>
-        <%= f.submit '更新',class:"btn btn-success" %>
+        <%= f.submit '更新',class:"btn btn-success ml-3" %>
       </div>
       <% end %>
     </div>
@@ -54,7 +54,7 @@
           <td>
           <%= form_with(model:[@order_info, product], url: admin_order_info_order_product_path(@order_info, product), method: :patch, local:true) do |f| %>
             <%= f.select :product_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]]  %>
-            <%= f.submit "更新", class:"btn btn-success" %>
+            <%= f.submit "更新", class:"btn btn-success ml-3" %>
           <% end %>
           </td>
         </tr>

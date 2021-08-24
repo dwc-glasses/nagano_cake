@@ -31,17 +31,7 @@
           </td>
           <td><%= order_info.total_payment %></td>
           <td>
-            <% if order_info.order_status == 0 %>
-              <%= "入金待ち" %>
-            <% elsif order_info.order_status == 1 %>
-              <%= "入金確認" %>
-            <% elsif order_info.order_status == 2 %>
-              <%= "制作中" %>
-            <% elsif order_info.order_status == 3 %>
-              <%= "発送準備中" %>
-            <% elsif order_info.order_status == 4 %>
-              <%= "発送済み" %>
-            <% end %>
+            <%= order_status_hash[:"#{order_info.order_status}"] %>
           </td>
           <td><%= link_to "表示する", public_order_info_path(order_info.id), {class: "btn btn-primary"} %></td>
           </tr>
