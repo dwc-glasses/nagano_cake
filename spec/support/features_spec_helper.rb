@@ -38,13 +38,4 @@ module FeaturesSpecHelper
     click_button 'カートに入れる'
   end
 
-  def login_as_customer(customer, password)
-    visit new_customer_session_path
-    within("#new_customer") do
-      fill_in "customer[email]", with: customer.email
-      fill_in "customer[password]", with: password
-      click_button "ログイン"
-    end
-  end
-
 end
