@@ -1,6 +1,14 @@
-<div class="order-infos-index">
+<div class="public-order-infos-index">
   <div class="row">
-      <h4 class="col-md-2 offset-md-1">注文履歴一覧</h4>
+      <div class="col-md-3">
+        <div class="oreder-history h2">
+          注文履歴一覧
+        </div>
+      </div>
+  </div>
+  <div class="row pt-4">
+    <%= paginate @order_infos %>
+
   </div>
   <div class="row pt-4">
     <table class="table table-bordered col">

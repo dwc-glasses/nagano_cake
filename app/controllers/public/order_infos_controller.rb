@@ -6,7 +6,7 @@ class Public::OrderInfosController < Public::Base
   end
 
   def index
-    @order_infos = OrderInfo.where(customer_id: current_customer.id)
+    @order_infos = OrderInfo.where(customer_id: current_customer.id).page(params[:page]).per(10)
   end
 
   def show

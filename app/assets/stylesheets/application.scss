@@ -18,6 +18,18 @@
     background-color: $beige;
 }
 
+.new-registration{
+  .new-customer-registration{
+    width: 180px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+  .new-session{
+    width: 240px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
 
 .infos_cell{
   margin: 0;
@@ -107,8 +119,20 @@ body {
   .about-txt {
     line-height: 400%;
   }
+}
 
+.public-customers-show{
+  .my-page-top{
+    width: 160px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
 
+.new-order-info{
+  width: 130px;
+  height: 30px;
+  background-color: whitesmoke ;
 }
 
 .order-infos-confirm{
@@ -117,11 +141,27 @@ body {
     height: 50px;
     width: 100px;
   }
-
+  .order-info-confirm-top{
+    width: 150px;
+    height: 30px;
+    background-color: whitesmoke ;
+  }
 }
 
+.public-order-infos-index{
+  .oreder-history{
+    width: 210px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
 
 .public-order-infos-show{
+  .order-show{
+    width: 200px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
   .order-info-label{
     width: 150px;
     height: 50px;
@@ -154,3 +194,4 @@ body {
  .plus-icon  {
    color: $light_green;
   }
+}
