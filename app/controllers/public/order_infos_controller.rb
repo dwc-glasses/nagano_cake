@@ -6,7 +6,7 @@ class Public::OrderInfosController < Public::Base
   end
 
   def index
-    @order_infos = OrderInfo.where(customer_id: current_customer.id)
+    @order_infos = OrderInfo.where(customer_id: current_customer.id).page(params[:page]).per(10)
   end
 
   def show
@@ -39,7 +39,7 @@ class Public::OrderInfosController < Public::Base
   def confirm
     #支払い方法、宛先が未選択だった場合はエラー
     if params[:payment_method].nil? || params[:order_address].nil?
-      flash[:notice] = "入力を確認してください"
+      flash[:alert] = "入力を確認してください"
       render :new
     end
 
