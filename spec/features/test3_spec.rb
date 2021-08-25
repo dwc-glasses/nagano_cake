@@ -187,7 +187,7 @@ feature "登録情報変更~退会[customer]" do
     end
 
     scenario "注文情報を入力後、サンクスページに遷移する" do
-      choose "credit-card"
+      choose "creditcard"
       choose "selected_address"
 
       click_button "確認画面へ進む"
