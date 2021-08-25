@@ -13,14 +13,14 @@
 
             <div class="form-group">
               <label for="pay-method" class="w-25">支払い方法</label>
-              <%= f.radio_button :payment_method, 0 %>クレジットカード</br>
+              <%= f.radio_button :payment_method, 0, id:"credit-card" %>クレジットカード</br>
               <label for="pay-method" class="w-25"></label>
-              <%= f.radio_button :payment_method, 1 %>銀行振込
+              <%= f.radio_button :payment_method, 1, id:"bank transfer" %>銀行振込
             </div>
 
             <div class="form-group">
               <label for="my-address" class="w-25">お届け先</label>
-              <%= f.radio_button :order_address, "my_address" %>ご自身の住所</br>
+              <%= f.radio_button :order_address, "my_address", id: "my_address" %>ご自身の住所</br>
               <label for="my-address" class="w-25"></label>
               〒<%= current_customer.postal_code %><%= current_customer.address %></br>
               <label for="my-address" class="w-25"></label>
@@ -28,13 +28,13 @@
 
               <% if current_customer.addresses.exists? %>
                 <label for="select-address" class="w-25"></label>
-                <%= f.radio_button :order_address, "selected_address" %>登録先住所から選択</br>
+                <%= f.radio_button :order_address, "selected_address", id:"selected_address" %>登録先住所から選択</br>
                 <label for="select-address" class="w-25"></label>
                 <%= f.select :select_address, select_address_array, size:50 %></br>
               <% end %>
 
               <label for="new-address" class="w-25"></label>
-              <%= f.radio_button :order_address, "new_address" %>新しいお届け先</br>
+              <%= f.radio_button :order_address, "new_address", id:"new_address" %>新しいお届け先</br>
                 <div class="form-group">
                   <label for="postal-code" class="w-25">郵便番号(ハイフンなし)</label>
                   <%= f.text_field :postal_code,class:"postal-code", placeholder: "0000000" %>

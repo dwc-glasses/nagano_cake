@@ -14,7 +14,7 @@ feature "login_as_adminの確認" do
       end
       
       expect(page).to have_content 'ログインしました'
-      expect(current_path).to eq admin_customers_path
+      expect(current_path).to eq admin_order_infos_path
     end
   end
 end

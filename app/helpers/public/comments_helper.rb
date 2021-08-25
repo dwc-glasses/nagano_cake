@@ -6,7 +6,7 @@ module Public::CommentsHelper
     end
     return @have_already_comment
   end
-
+  
   def have_you_ordered_product?
     @have_ordered_product = false
     current_customer.order_infos.each do |order|
