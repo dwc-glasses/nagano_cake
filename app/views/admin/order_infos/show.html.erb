@@ -46,14 +46,14 @@
       </thead>
       <tbody>
         <% @order_info.order_products.each do |product| %>
-        <tr>
+        <tr class="order-product">
           <td><%=  product.product.name %></td>
           <td><%=  product.price %></td>
           <td><%= product.quantity %></td>
           <td><%=  product.price * product.quantity %></td>
           <td>
           <%= form_with(model:[@order_info, product], url: admin_order_info_order_product_path(@order_info, product), method: :patch, local:true) do |f| %>
-            <%= f.select :product_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["制作完了", 3]]  %>
+            <%= f.select :product_status, [["着手不可", 0], ["制作待ち", 1], ["製作中", 2], ["製作完了", 3]]  %>
             <%= f.submit "製品の更新", class:"btn btn-success ml-3" %>
           <% end %>
           </td>

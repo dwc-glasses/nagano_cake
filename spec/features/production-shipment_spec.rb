@@ -12,6 +12,7 @@ feature "注文ステータスの変更" do
     @customer = create(:customer)
     @order_info = create(:order_info, customer_id:@customer.id)
     @order_product = create(:order_product, order_id: @order_info.id, product_id: @product.id)
+    @order_product2 = create(:order_product, order_id: @order_info.id, product_id: @product.id)
   end
 
   context "管理者側での操作" do
@@ -31,31 +32,36 @@ feature "注文ステータスの変更" do
         visit admin_order_info_path(@order_info)
         select '入金確認', from: 'order_info[order_status]'
         click_on '注文の更新'
+        expect(page).to have_content "入金確認"
         new_order_info = OrderInfo.order(:id).last
         expect(new_order_info.order_status).to eq 1
       end
 
       scenario "製作ステータスを1つ製作中にする" do
         visit admin_order_info_path(@order_info)
-        select '製作中', from: 'order_product[product_status]'
-        click_on '製品の更新'
-        new_order_product = OrderProduct.order(:id).last
+        all('.order-product')[0].select '製作中', from: 'order_product[product_status]'
+        all('.order-product')[0].click_on '製品の更新'
+        expect(page).to have_content "製作中"
+        new_order_product = OrderProduct.order(:id).last(2)[0]
         expect(new_order_product.product_status).to eq 2
       end
 
       scenario "製作ステータスを全て製作完了にする"do
         visit admin_order_info_path(@order_info)
-        #order_productそれぞれに対して処理する
-        select '制作完了', from: 'order_product[product_status]'
-        click_on '製品の更新'
-        new_order_product = OrderProduct.order(:id).last
-        expect(new_order_product.product_status).to eq 3
+        (0..@order_info.order_products.count - 1).each do |n|
+          all('.order-product')[n].select '製作完了', from: 'order_product[product_status]'
+          all('.order-product')[n].click_on '製品の更新'
+        end
+        @order_info.order_products.each do |product|
+          expect(product.product_status).to eq 3
+        end
       end
 
       scenario "注文ステータスを発注済みにする" do
         visit admin_order_info_path(@order_info)
         select '発送済み', from: 'order_info[order_status]'
         click_on '注文の更新'
+        expect(page).to have_content "発送済み"
         new_order_info = OrderInfo.order(:id).last
         expect(new_order_info.order_status).to eq 4
       end
@@ -91,7 +97,11 @@ feature "注文ステータスの変更" do
     end
 
     scenario "注文ステータスが発送済みになっている" do
-      # @order_info.update(order_status: 4)
+      visit admin_order_info_path(@order_info)
+      select '発送済み', from: 'order_info[order_status]'
+      click_on '注文の更新'
+
+      visit public_customers_path
       click_on "注文一覧を見る"
       click_on "表示する"
       expect(page).to have_content "発送済み"
