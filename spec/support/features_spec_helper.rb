@@ -17,7 +17,6 @@ module FeaturesSpecHelper
     end
   end
   
-  
   def upload_product(name, introduction, price)
     visit new_admin_product_path
     within("form") do
@@ -30,5 +29,13 @@ module FeaturesSpecHelper
       click_button "新規登録"
     end
   end
-  
+
+  def upload_cart_product(product)
+    visit "/products/#{product.id}"
+    within('.cartin') do
+      select '3', from: 'cart_product[quantity]'
+    end
+    click_button 'カートに入れる'
+  end
+
 end
