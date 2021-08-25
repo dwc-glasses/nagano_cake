@@ -27,7 +27,7 @@
       <!--商品画像-->
       <div class="mb-2 product">
         <%= link_to public_product_path(product.id) do %>
-          <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x200' %>
+          <%= attachment_image_tag product, :image, format: 'jpeg', size: '250x200', alt:"image#{product.id}" %>
         <% end %>
       </div>
       <!--商品情報-->

@@ -29,5 +29,22 @@ module FeaturesSpecHelper
       click_button "新規登録"
     end
   end
-  
+
+  def upload_cart_product(product)
+    visit "/products/#{product.id}"
+    within('.cartin') do
+      select '3', from: 'cart_product[quantity]'
+    end
+    click_button 'カートに入れる'
+  end
+
+  def login_as_customer(customer, password)
+    visit new_customer_session_path
+    within("#new_customer") do
+      fill_in "customer[email]", with: customer.email
+      fill_in "customer[password]", with: password
+      click_button "ログイン"
+    end
+  end
+
 end

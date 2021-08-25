@@ -33,7 +33,7 @@
           <td>
             <%= order_status_hash[:"#{order_info.order_status}"] %>
           </td>
-          <td><%= link_to "表示する", public_order_info_path(order_info.id), {class: "btn btn-primary"} %></td>
+          <td><%= link_to "表示する", public_order_info_path(order_info.id), {class: "btn btn-primary to-order-info-show#{order_info.id}"} %></td>
           </tr>
         <% end %>
       </tbody>
