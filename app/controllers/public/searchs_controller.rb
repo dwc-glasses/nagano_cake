@@ -1,7 +1,7 @@
 class Public::SearchsController < Public::Base
   def search
-    @value = params["search"]["value"]
-    @how = params["search"]["how"]
+    @value = params[:value]
+    @how = params[:how]
     @datas = search_for(@value, @how)
     @searched_value = unless @value.to_i == 0
       Genre.find(@value.to_i).name
