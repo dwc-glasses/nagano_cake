@@ -19,6 +19,32 @@
 }
 
 
+div#error{
+  width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  border: solid 4px $dark_gray;
+  background-color: $very_light_gray;
+  text-align: center;
+  p.url {font-family: monospace;}
+}
+
+
+.new-registration{
+  .new-customer-registration{
+    width: 180px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+  .new-session{
+    width: 240px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
+
+
 .infos_cell{
   margin: 0;
   height: 40px;
@@ -107,8 +133,20 @@ body {
   .about-txt {
     line-height: 400%;
   }
+}
 
+.public-customers-show{
+  .my-page-top{
+    width: 160px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
 
+.new-order-info{
+  width: 130px;
+  height: 30px;
+  background-color: whitesmoke ;
 }
 
 .order-infos-confirm{
@@ -117,11 +155,27 @@ body {
     height: 50px;
     width: 100px;
   }
-
+  .order-info-confirm-top{
+    width: 150px;
+    height: 30px;
+    background-color: whitesmoke ;
+  }
 }
 
+.public-order-infos-index{
+  .oreder-history{
+    width: 210px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
+}
 
 .public-order-infos-show{
+  .order-show{
+    width: 200px;
+    height: 35px;
+    background-color: whitesmoke ;
+  }
   .order-info-label{
     width: 150px;
     height: 50px;

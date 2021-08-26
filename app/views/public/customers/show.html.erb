@@ -1,10 +1,11 @@
+<div class="public-customers-show">
   <div class="row">
     <div class="col-md-9">
-      <h3 class="m-5 bg-light">マイページ</h3>
+      <div class="my-page-top h2">マイページ</div>
     </div>
   </div>
 
-  <div class="row pb-3">
+  <div class="row py-3">
     <div class="col-md-2">
       <h4>登録情報</h4>
     </div>
@@ -120,7 +121,7 @@
       <h4>配送先</h4>
     </div>
     <div class="col-md-2">
-      <%= link_to "一覧を見る", public_addresses_path, class: "btn btn-primary btn-sm", id: "address-list" %>
+      <%= link_to "配送先一覧を見る", public_addresses_path, {class: "btn btn-primary btn-sm"} %>
     </div>
   </div>
 
@@ -129,7 +130,7 @@
       <h4>注文一覧</h4>
     </div>
     <div class="col-md-2">
-      <%= link_to "一覧を見る", public_order_infos_path ,class: "btn btn-primary btn-sm", id: "order-list" %>
+      <%= link_to "注文一覧を見る", public_order_infos_path ,{class: "btn btn-primary btn-sm"} %>
     </div>
   </div>
-
+</div>

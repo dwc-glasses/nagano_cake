@@ -1,6 +1,6 @@
 class Public::ProductsController < Public::Base
   before_action :authenticate_customer!, except: [:index, :show]
-  
+
   def index
     @products = Product.all
     @cart_product = CartProduct.new
