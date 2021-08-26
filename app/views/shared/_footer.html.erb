@@ -14,7 +14,7 @@
             <li><%= link_to "商品一覧", public_products_path, class:"text-muted" %></li>
 
             <% Genre.all.each do |g| %>
-              <li><%= link_to g.name, public_search_path('search[value]': g.id, 'search[how]': "match"), class:"text-muted" %></li>
+              <li><%= link_to g.name, public_search_path(value: g.id, how: "match"), class:"text-muted" %></li>
             <% end %>
           </ul>
         </div>
