@@ -1,0 +1,33 @@
+<%= render 'layouts/error', model: @genre %>
+  <div class="row">
+    <h2>ジャンル一覧・追加</h2>
+  </div>
+      <%= form_with model: @genre, url: admin_genres_path, class:"row py-4", local: true do |f| %>
+        <%= f.label :ジャンル名, class:"ml-3 d-flex align-items-center" %>
+        <%= f.text_field :name, placeholder:"ジャンル名", class:"col-2 mr-5 ml-5"%>
+        <div class="text-right">
+          <%= f.submit "新規登録", class: "btn btn-success"%>
+        </div>
+
+      <% end %>
+
+<div class="row">
+  <div class="col-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ジャンル名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success btn-sm" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

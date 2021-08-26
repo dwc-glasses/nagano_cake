@@ -3,12 +3,28 @@
   <head>
     <title>Naganocake</title>
     <%= csrf_meta_tags %>
-
+    <script src="https://kit.fontawesome.com/cdc0e6c98c.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <%= render "shared/header" %>
+      
+      <div class="container px-5 px-sm-0">
+        <%= render "shared/flash_message" %>
+        <div class="main">
+          <%= yield %>
+        </div>
+      </div>
+      
+      <%= render "shared/footer" %>
+    </div>
   </body>
 </html>

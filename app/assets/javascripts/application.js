@@ -10,7 +10,24 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require Chart.min
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+/*global $*/
+
+$(document).on('turbolinks:load', function() {
+    $(function() {
+        $('.slider').slick({
+        autoplay: true,
+        dots: true,
+        centerMode: true,
+        centerPadding: '5%',
+        variableWidth: true,
+        });
+    });
+});
+
+
+

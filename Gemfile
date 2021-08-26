@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0'
+gem 'rails', '5.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -46,3 +46,37 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#devise
+gem 'devise'
+gem 'devise-i18n'
+
+#refile
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+
+#bootstrap&jquery
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+
+#kaminari
+gem 'kaminari'
+
+#faker
+gem 'faker'
+gem 'gimei'
+
+#i18n
+gem "rails-i18n"
+
+#rspec/factorybot/capybara
+group :test do
+  gem "capybara", ">= 2.15"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+end
+
+gem 'bootsnap', require: false
+gem 'chart-js-rails', '~> 0.1.4'
+

@@ -1,0 +1,65 @@
+<div class="row">
+  <h2 class="m-5 bg-light">
+    <%= @customer.family_name + @customer.given_name %>さんの会員詳細
+  </h2>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="customer-id">
+      <label for="customer-id" class="w-25">会員ID</label>
+      <%= @customer.id %>
+    </div>
+    <div class="form-group">
+      <label for="customer-name" class="w-25">氏名</label>
+      <%= @customer.family_name + @customer.given_name %>
+    </div>
+    <div class="form-group">
+      <label for="customer-name-kana" class="w-25">フリガナ</label>
+      <%= @customer.family_name_kana + @customer.given_name_kana %>
+    </div>
+    <div class="form-group">
+      <label for="postal-code" class="w-25">郵便番号</label>
+      <%= @customer.postal_code %>
+    </div>
+    <div class="form-group">
+      <label for="address" class="w-25">住所</label>
+      <%= @customer.address %>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="w-25">電話番号</label>
+      <%= @customer.phone %>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="w-25">メールアドレス</label>
+      <%= @customer.email %>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="w-25">会員ステータス</label>
+      <% if @customer.suspended %>
+        <span class="text-secondary">退会</span></p>
+      <% else %>
+        <span class="text-success">有効</span></p>
+      <% end %>
+    </div>
+    <div class="m-10">
+      <%= link_to "編集する",edit_admin_customer_path(@customer), {class: "btn btn-success"} %>
+      <%= link_to "注文履歴一覧を見る", admin_order_infos_path,{class: "btn btn-primary ml-5"} %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

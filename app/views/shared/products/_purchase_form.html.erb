@@ -1,0 +1,12 @@
+<%= form_with model: cart_product, url: path, local: true, class:"cartin" do |f| %>
+    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :product_id, :value => product.id %>
+
+    <% if controller_name == "products" %>
+      <%= f.submit "カートに入れる" %>
+    <% elsif controller_name == "cart_products" %>
+      <%= f.submit "変更" %>
+    <% end %>
+
+<% end %>

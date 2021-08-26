@@ -1,0 +1,34 @@
+<footer class="footer-main">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-6 col-md">
+          <h5>NAGANO CAKE</h5>
+          <ul class="list-unstyled text-small">
+            <li><%= link_to "Top", public_root_path, class:"text-muted" %></li>
+            <li><%= link_to "About", public_about_path, class:"text-muted" %></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Products</h5>
+          <ul class="list-unstyled text-small">
+            <li><%= link_to "商品一覧", public_products_path, class:"text-muted" %></li>
+
+            <% Genre.all.each do |g| %>
+              <li><%= link_to g.name, public_search_path('search[value]': g.id, 'search[how]': "match"), class:"text-muted" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Access</h5>
+          <ul class="list-unstyled text-small text-muted">
+          〒100-8111</br>
+          東京都千代田区千代田１−１
+          </ul>
+        </div>
+        <div class="col-12 col-md">
+          <small><%= link_to "To Administrator", new_admin_session_path, class:"d-block mb-3 text-muted" %></small>
+          <small class="d-block mb-3 text-muted">&copy; 2021</small>
+        </div>
+      </div>
+  </div>
+</footer>

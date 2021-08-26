@@ -1,0 +1,7 @@
+<!--validationエラー-->
+<%= render 'layouts/error', model:@product %>
+
+<h2 class="mb-5">商品編集</h2>
+
+<!--商品新規登録form-->
+<%= render "shared/products/form", product: @product, path: admin_product_path, method: :patch %>
