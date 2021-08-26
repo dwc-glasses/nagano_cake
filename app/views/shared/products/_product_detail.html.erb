@@ -34,7 +34,7 @@
     <% if admin_signed_in? %>
       <tr><th></th><td><%= link_to "edit", edit_admin_product_path(product.id),class: "btn btn-info btn-sm" %></td></tr>
     <% end %>
-    
+
     <% if customer_signed_in? %>
       <% if have_you_ordered_product? && !have_you_already_comment? %>
         <tr>
@@ -59,8 +59,10 @@
           <%= comment.body %>
           <% if admin_signed_in? %>
             <%= link_to "コメントを削除", admin_product_comment_path(product,comment,customer_id:comment.customer.id), method: :delete, class:"btn btn-danger" %>
-          <% elsif comment.customer_id == current_customer.id %>
-            <%= link_to "コメントを削除", public_product_comment_path(product,comment,customer_id:comment.customer.id), method: :delete, class:"btn btn-danger" %>
+          <% elsif signed_in? %>
+            <% if comment.customer_id == current_customer.id %>
+              <%= link_to "コメントを削除", public_product_comment_path(product,comment,customer_id:comment.customer.id), method: :delete, class:"btn btn-danger" %>
+            <% end %>
           <% end %>
         </td>
       </tr>
