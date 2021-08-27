@@ -25,9 +25,9 @@ class Admin::OrderInfosController < Admin::Base
   def update
     @order_info = OrderInfo.find(params[:id])
     if @order_info.update(order_info_params)
-      if @order_info.order_status = 1
+      if @order_info.order_status == 1 #入金確認
         @order_info.order_products.each do |product|
-          product.update(product_status: 1)
+          product.update(product_status: 1) #制作待ち
         end
       end
       redirect_to admin_order_info_path(@order_info)
