@@ -5,7 +5,7 @@ class Admin::OrderProductsController < Admin::Base
     product_complete = true
 
     if @order_product.update(order_product_params)
-      if @order_product.product_status = 2  #製作中
+      if @order_product.product_status = 2 && @order_info.order_status == 1 #製品が製作中かつ注文が入金確認
         @order_info.update(order_status: 2) #製作中
       end
       @order_info.order_products.each do |product|
