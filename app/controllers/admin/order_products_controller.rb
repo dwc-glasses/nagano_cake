@@ -5,16 +5,16 @@ class Admin::OrderProductsController < Admin::Base
     product_complete = true
 
     if @order_product.update(order_product_params)
-      if @order_product.product_status = 2
-        @order_info.update(order_status: 2)
+      if @order_product.product_status = 2  #製作中
+        @order_info.update(order_status: 2) #製作中
       end
       @order_info.order_products.each do |product|
-        if product.product_status < 3
+        if product.product_status < 3 #製作完了
           product_complete = false
         end
       end
       if product_complete == true
-        @order_info.update(order_status: 3)
+        @order_info.update(order_status: 3) #発送準備中
       end
 
       redirect_to admin_order_info_path(@order_info)
