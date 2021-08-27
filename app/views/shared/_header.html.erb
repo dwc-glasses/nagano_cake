@@ -25,9 +25,11 @@
               </li>
               <li class="nav-item pl-4">
                 <%= form_with url:public_search_path, method: :get, local:true do |f| %>
-                  <%= f.search_field :value, placeholder: 'ジャンルを入力', class:'border-0' %>
-                  <%=  f.hidden_field :how, value:'partical' %>
-                  <%= f.submit '検索',class:'btn btn-light ml-2' %>
+                  <%= f.search_field :value, placeholder: 'キーワードを入力', class:'border-0' %>
+                    <%=  f.hidden_field :how, value:'partical' %>
+                    <%= f.button type: "submit", class:'btn btn-light ml-2' do %>
+                      <i class="fas fa-search"></i>
+                    <% end %>
                 <% end %>
               </li>
            <% elsif admin_signed_in? %>
@@ -60,6 +62,15 @@
               </li>
               <li class="nav-item pl-4">
                 <%= link_to "LOGIN", new_customer_session_path, class:"nav-link text-center" %>
+              </li>
+              <li class="nav-item pl-4">
+                <%= form_with url:public_search_path, method: :get, local:true do |f| %>
+                  <%= f.search_field :value, placeholder: 'キーワードを入力', class:'border-0' %>
+                    <%=  f.hidden_field :how, value:'partical' %>
+                    <%= f.button type: "submit", class:'btn btn-light ml-2' do %>
+                      <i class="fas fa-search"></i>
+                    <% end %>
+                <% end %>
               </li>
             <% end %>
         </ul>
